@@ -46,11 +46,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Atnezes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Atnezes.Designer.cs">
+      <DependentUpon>Atnezes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Hozzadas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Hozzadas.Designer.cs">
+      <DependentUpon>Hozzadas.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

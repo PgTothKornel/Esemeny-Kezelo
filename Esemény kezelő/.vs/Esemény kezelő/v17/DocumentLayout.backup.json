@@ -1,10 +1,26 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\20260413_TothKornel\\Esem\u00E9ny kezel\u0151\\",
+  "WorkspaceRootPath": "C:\\Users\\tothKornel\\Documents\\GitHub\\Esem\u00E9ny kezel\u0151\\Esem\u00E9ny kezel\u0151\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6C2BBAA3-61CA-4A24-B7CE-5A4A872AE571}|Esem\u00E9ny kezel\u0151.csproj|d:\\20260413_tothkornel\\esem\u00E9ny kezel\u0151\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{6C2BBAA3-61CA-4A24-B7CE-5A4A872AE571}|Esem\u00E9ny kezel\u0151.csproj|c:\\users\\tothkornel\\documents\\github\\esem\u00E9ny kezel\u0151\\esem\u00E9ny kezel\u0151\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C2BBAA3-61CA-4A24-B7CE-5A4A872AE571}|Esem\u00E9ny kezel\u0151.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C2BBAA3-61CA-4A24-B7CE-5A4A872AE571}|Esem\u00E9ny kezel\u0151.csproj|c:\\users\\tothkornel\\documents\\github\\esem\u00E9ny kezel\u0151\\esem\u00E9ny kezel\u0151\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{6C2BBAA3-61CA-4A24-B7CE-5A4A872AE571}|Esem\u00E9ny kezel\u0151.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C2BBAA3-61CA-4A24-B7CE-5A4A872AE571}|Esem\u00E9ny kezel\u0151.csproj|c:\\users\\tothkornel\\documents\\github\\esem\u00E9ny kezel\u0151\\esem\u00E9ny kezel\u0151\\atnezes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C2BBAA3-61CA-4A24-B7CE-5A4A872AE571}|Esem\u00E9ny kezel\u0151.csproj|solutionrelative:atnezes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C2BBAA3-61CA-4A24-B7CE-5A4A872AE571}|Esem\u00E9ny kezel\u0151.csproj|c:\\users\\tothkornel\\documents\\github\\esem\u00E9ny kezel\u0151\\esem\u00E9ny kezel\u0151\\hozzadas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{6C2BBAA3-61CA-4A24-B7CE-5A4A872AE571}|Esem\u00E9ny kezel\u0151.csproj|solutionrelative:hozzadas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C2BBAA3-61CA-4A24-B7CE-5A4A872AE571}|Esem\u00E9ny kezel\u0151.csproj|c:\\users\\tothkornel\\documents\\github\\esem\u00E9ny kezel\u0151\\esem\u00E9ny kezel\u0151\\atnezes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{6C2BBAA3-61CA-4A24-B7CE-5A4A872AE571}|Esem\u00E9ny kezel\u0151.csproj|solutionrelative:atnezes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,10 +35,60 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Form1.cs [Design]",
-              "DocumentMoniker": "D:\\20260413_TothKornel\\Esem\u00E9ny kezel\u0151\\Form1.cs",
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\tothKornel\\Documents\\GitHub\\Esem\u00E9ny kezel\u0151\\Esem\u00E9ny kezel\u0151\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "D:\\20260413_TothKornel\\Esem\u00E9ny kezel\u0151\\Form1.cs [Design]",
+              "ToolTip": "C:\\Users\\tothKornel\\Documents\\GitHub\\Esem\u00E9ny kezel\u0151\\Esem\u00E9ny kezel\u0151\\Form1.cs",
+              "RelativeToolTip": "Form1.cs",
+              "ViewState": "AgIAAEAAAAAAAAAAAAAwwFcAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-13T08:51:54.173Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Atnezes.cs",
+              "DocumentMoniker": "C:\\Users\\tothKornel\\Documents\\GitHub\\Esem\u00E9ny kezel\u0151\\Esem\u00E9ny kezel\u0151\\Atnezes.cs",
+              "RelativeDocumentMoniker": "Atnezes.cs",
+              "ToolTip": "C:\\Users\\tothKornel\\Documents\\GitHub\\Esem\u00E9ny kezel\u0151\\Esem\u00E9ny kezel\u0151\\Atnezes.cs",
+              "RelativeToolTip": "Atnezes.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-13T08:47:21.532Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Atnezes.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\tothKornel\\Documents\\GitHub\\Esem\u00E9ny kezel\u0151\\Esem\u00E9ny kezel\u0151\\Atnezes.cs",
+              "RelativeDocumentMoniker": "Atnezes.cs",
+              "ToolTip": "C:\\Users\\tothKornel\\Documents\\GitHub\\Esem\u00E9ny kezel\u0151\\Esem\u00E9ny kezel\u0151\\Atnezes.cs [Design]",
+              "RelativeToolTip": "Atnezes.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-13T08:35:03.353Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Hozzadas.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\tothKornel\\Documents\\GitHub\\Esem\u00E9ny kezel\u0151\\Esem\u00E9ny kezel\u0151\\Hozzadas.cs",
+              "RelativeDocumentMoniker": "Hozzadas.cs",
+              "ToolTip": "C:\\Users\\tothKornel\\Documents\\GitHub\\Esem\u00E9ny kezel\u0151\\Esem\u00E9ny kezel\u0151\\Hozzadas.cs [Design]",
+              "RelativeToolTip": "Hozzadas.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-13T08:34:50.695Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\tothKornel\\Documents\\GitHub\\Esem\u00E9ny kezel\u0151\\Esem\u00E9ny kezel\u0151\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "C:\\Users\\tothKornel\\Documents\\GitHub\\Esem\u00E9ny kezel\u0151\\Esem\u00E9ny kezel\u0151\\Form1.cs [Design]",
               "RelativeToolTip": "Form1.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-13T08:30:44.623Z",

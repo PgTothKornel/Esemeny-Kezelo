@@ -1,0 +1,10 @@
+C:\Users\tothKornel\Documents\GitHub\Esemény kezelő\Esemény kezelő\bin\Debug\Esemény kezelő.exe.config
+C:\Users\tothKornel\Documents\GitHub\Esemény kezelő\Esemény kezelő\bin\Debug\Esemény kezelő.exe
+C:\Users\tothKornel\Documents\GitHub\Esemény kezelő\Esemény kezelő\bin\Debug\Esemény kezelő.pdb
+C:\Users\tothKornel\Documents\GitHub\Esemény kezelő\Esemény kezelő\obj\Debug\Esemény kezelő.csproj.AssemblyReference.cache
+C:\Users\tothKornel\Documents\GitHub\Esemény kezelő\Esemény kezelő\obj\Debug\Esemény_kezelő.Properties.Resources.resources
+C:\Users\tothKornel\Documents\GitHub\Esemény kezelő\Esemény kezelő\obj\Debug\Esemény kezelő.csproj.GenerateResource.cache
+C:\Users\tothKornel\Documents\GitHub\Esemény kezelő\Esemény kezelő\obj\Debug\Esemény kezelő.csproj.CoreCompileInputs.cache
+C:\Users\tothKornel\Documents\GitHub\Esemény kezelő\Esemény kezelő\obj\Debug\Esemény kezelő.exe
+C:\Users\tothKornel\Documents\GitHub\Esemény kezelő\Esemény kezelő\obj\Debug\Esemény kezelő.pdb
+C:\Users\tothKornel\Documents\GitHub\Esemény kezelő\Esemény kezelő\obj\Debug\Esemény kezelő.exe.config
