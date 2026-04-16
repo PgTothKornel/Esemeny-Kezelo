@@ -8,3 +8,14 @@ C:\Users\tothKornel\Documents\GitHub\Esemény kezelő\Esemény kezelő\obj\Debug
 C:\Users\tothKornel\Documents\GitHub\Esemény kezelő\Esemény kezelő\obj\Debug\Esemény kezelő.exe
 C:\Users\tothKornel\Documents\GitHub\Esemény kezelő\Esemény kezelő\obj\Debug\Esemény kezelő.pdb
 C:\Users\tothKornel\Documents\GitHub\Esemény kezelő\Esemény kezelő\obj\Debug\Esemény kezelő.exe.config
+C:\Users\toge7\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\bin\Debug\Esemény kezelő.exe.config
+C:\Users\toge7\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\bin\Debug\Esemény kezelő.exe
+C:\Users\toge7\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\bin\Debug\Esemény kezelő.pdb
+C:\Users\toge7\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\obj\Debug\Esemény kezelő.csproj.AssemblyReference.cache
+C:\Users\toge7\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\obj\Debug\Esemény_kezelő.Form1.resources
+C:\Users\toge7\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\obj\Debug\Esemény_kezelő.Properties.Resources.resources
+C:\Users\toge7\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\obj\Debug\Esemény kezelő.csproj.GenerateResource.cache
+C:\Users\toge7\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\obj\Debug\Esemény kezelő.csproj.CoreCompileInputs.cache
+C:\Users\toge7\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\obj\Debug\Esemény kezelő.exe
+C:\Users\toge7\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\obj\Debug\Esemény kezelő.pdb
+C:\Users\toge7\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\obj\Debug\Esemény_kezelő.Atnezes.resources

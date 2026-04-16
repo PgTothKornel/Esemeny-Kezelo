@@ -15,6 +15,8 @@ namespace Esemény_kezelő
         public Atnezes()
         {
             InitializeComponent();
+
+            this.WindowState = FormWindowState.Maximized;
         }
     }
 }

@@ -12,6 +12,7 @@ namespace Esemény_kezelő
 {
     public partial class Form1 : Form
     {
+        static Panel tarto = new Panel();
         public Form1()
         {
             InitializeComponent();
@@ -150,7 +151,96 @@ namespace Esemény_kezelő
 
             Controls.Clear();
 
-            bejelentkezesUI();
+            AlapUi();
+
+            //bejelentkezesUI();
+        }
+
+        void AlapUi()
+        {
+            TableLayoutPanel sidebar = new TableLayoutPanel();
+            TableLayoutPanel header = new TableLayoutPanel();
+            Button Profile = new Button();
+            Button atnezes = new Button();
+            Button hozzadas = new Button();
+
+
+            sidebar.BackColor = System.Drawing.Color.CadetBlue;
+            sidebar.Dock = System.Windows.Forms.DockStyle.Left;
+            sidebar.Location = new System.Drawing.Point(0, 0);
+            sidebar.Name = "panel1";
+            sidebar.Size = new System.Drawing.Size(Convert.ToInt32(this.Width * 0.2), this.Height);
+            sidebar.ColumnCount = 1;
+            sidebar.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            sidebar.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            sidebar.RowCount = 3;
+            sidebar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            sidebar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            sidebar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            sidebar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            
+
+            header.BackColor = System.Drawing.Color.CadetBlue;
+            header.Dock = System.Windows.Forms.DockStyle.Top;
+            header.Location = new System.Drawing.Point(0, 0);
+            header.Name = "panel3";
+            header.Size = new System.Drawing.Size(this.Width, Convert.ToInt32(this.Height * 0.1));
+            header.ColumnCount = 1;
+            header.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            header.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            header.RowCount = 1;
+            header.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+
+
+            Profile.Text = "PlaceHolder";
+            Profile.Image = null;
+            Profile.ImageAlign = ContentAlignment.MiddleRight;
+            Profile.TextAlign = ContentAlignment.MiddleLeft;
+            Profile.Size = new Size(Convert.ToInt32(header.Width * 0.3), header.Height);
+            Profile.TextImageRelation = TextImageRelation.TextBeforeImage;
+
+
+            atnezes.Text = "Események nézése";
+            atnezes.Size = new Size(sidebar.Width, Convert.ToInt32(sidebar.Height * 0.1));
+            atnezes.FlatStyle = FlatStyle.Flat;
+            atnezes.Dock = DockStyle.Top;
+            atnezes.BackColor = Color.LightBlue;
+            atnezes.Click += new EventHandler(atnezesForm);
+
+            hozzadas.Text = "Esemény hozzáadása";
+            hozzadas.Size = new Size(sidebar.Width, Convert.ToInt32(sidebar.Height * 0.1));
+            hozzadas.FlatStyle = FlatStyle.Flat;
+            hozzadas.Dock = DockStyle.Top;
+            hozzadas.BackColor = Color.LightBlue;
+            hozzadas.Click += new EventHandler(hozzadasForm);
+
+            tarto.Dock = DockStyle.Fill;
+            tarto.BackColor = Color.LightBlue;
+
+            Controls.Add(header);
+            Controls.Add(sidebar);
+            header.Controls.Add(Profile);
+            sidebar.Controls.Add(atnezes);
+            sidebar.Controls.Add(hozzadas);
+            Controls.Add(tarto);
+
+            tarto.Controls.Clear();
+        }
+
+        void atnezesForm(object obj, EventArgs e)
+        {
+            Form atnezes = new Atnezes();
+            atnezes.TopLevel = false;
+            
+
+            tarto.Controls.Add(atnezes);
+            atnezes.BringToFront();
+            atnezes.Show();
+        }
+
+        void hozzadasForm(object obj, EventArgs e)
+        {
+
         }
     }
 }
