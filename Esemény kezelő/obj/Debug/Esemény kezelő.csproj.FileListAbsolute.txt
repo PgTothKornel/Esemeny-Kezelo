@@ -52,3 +52,5 @@ C:\Users\tothKornel\Documents\GitHub\Esemeny Kezelo\Esemény kezelő\obj\Debug\E
 C:\Users\tothKornel\Documents\GitHub\Esemeny Kezelo\Esemény kezelő\obj\Debug\Esemény kezelő.exe
 C:\Users\tothKornel\Documents\GitHub\Esemeny Kezelo\Esemény kezelő\obj\Debug\Esemény kezelő.pdb
 C:\Users\tothKornel\Documents\GitHub\Esemeny Kezelo\Esemény kezelő\obj\Debug\Esemény_kezelő.gradientLayoutPanel.resources
+C:\Users\tothKornel\Documents\GitHub\Esemeny Kezelo\Esemény kezelő\bin\Debug\BCrypt.Net-Next.dll
+C:\Users\tothKornel\Documents\GitHub\Esemeny Kezelo\Esemény kezelő\bin\Debug\BCrypt.Net-Next.xml

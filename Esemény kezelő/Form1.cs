@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySqlConnector;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BCrypt;
+using BCrypt.Net;
 
 namespace Esemény_kezelő
 {
@@ -57,9 +60,22 @@ namespace Esemény_kezelő
     public partial class Form1 : Form
     {
         static Panel tarto = new Panel();
+        static TextBox tb_nev = new TextBox();
+        static TextBox tb_jelszo = new TextBox();
+        public static string nev = "";
         public Form1()
         {
             InitializeComponent();
+
+            using (var conn = new MySqlConnection("server=127.0.0.1;uid=root;pwd=mysql;"))
+            {
+                conn.Open();
+
+                using (var command = new MySqlCommand("CREATE DATABASE IF NOT EXISTS school_events;",conn))
+                {
+                    command.ExecuteNonQuery();
+                }
+            }
 
             bejelentkezesUI();
         }
@@ -71,8 +87,8 @@ namespace Esemény_kezelő
             Label lbl_koszones = new Label();
             Label lbl_nev = new Label();
             Label lbl_jelszo = new Label();
-            TextBox tb_nev = new TextBox();
-            TextBox tb_jelszo = new TextBox();
+            tb_nev = new TextBox();
+            tb_jelszo = new TextBox();
             Button btn_bejelentkezes = new Button();
             Button btn_regisztracio = new Button();
             tb_nev.AutoSize = true;
@@ -107,12 +123,12 @@ namespace Esemény_kezelő
             btn_bejelentkezes.Font = new Font("Arial", 16.0f);
 
             lbl_koszones.Location = new Point(Convert.ToInt32(Convert.ToDouble(this.Width) / 2 - lbl_koszones.Width), Convert.ToInt32(Convert.ToDouble(this.Height) / 10 - lbl_koszones.Height));
-            lbl_nev.Location = new Point(Convert.ToInt32(Convert.ToDouble(this.Width) / 2 - lbl_nev.Width * 1.2), Convert.ToInt32(Convert.ToDouble(this.Height) / 2.7 - lbl_nev.Height));
-            lbl_jelszo.Location = new Point(Convert.ToInt32(Convert.ToDouble(this.Width) / 2 - lbl_jelszo.Width * 1.2), Convert.ToInt32(Convert.ToDouble(this.Height) / 3.6 - lbl_jelszo.Height));
+            lbl_jelszo.Location = new Point(Convert.ToInt32(Convert.ToDouble(this.Width) / 2 - lbl_nev.Width * 1.2), Convert.ToInt32(Convert.ToDouble(this.Height) / 2.7 - lbl_nev.Height));
+            lbl_nev.Location = new Point(Convert.ToInt32(Convert.ToDouble(this.Width) / 2 - lbl_jelszo.Width * 1.2), Convert.ToInt32(Convert.ToDouble(this.Height) / 3.6 - lbl_jelszo.Height));
             tb_jelszo.Location = new Point(Convert.ToInt32(Convert.ToDouble(this.Width) / 2 + tb_jelszo.Width * 0.1), Convert.ToInt32(Convert.ToDouble(this.Height) / 2.6 - tb_jelszo.Height));
             tb_nev.Location = new Point(Convert.ToInt32(Convert.ToDouble(this.Width) / 2 + tb_nev.Width * 0.1), Convert.ToInt32(Convert.ToDouble(this.Height) / 3.4 - tb_nev.Height));
-            btn_bejelentkezes.Location = new Point(Convert.ToInt32(Convert.ToDouble(this.Width) / 1.5 - btn_bejelentkezes.Width * 0.5), Convert.ToInt32(Convert.ToDouble(this.Height) * 0.8));
-            btn_regisztracio.Location = new Point(Convert.ToInt32(Convert.ToDouble(this.Width) / 3 - btn_regisztracio.Width * 0.5), Convert.ToInt32(Convert.ToDouble(this.Height) * 0.8));
+            btn_regisztracio.Location = new Point(Convert.ToInt32(Convert.ToDouble(this.Width) / 1.5 - btn_bejelentkezes.Width * 0.5), Convert.ToInt32(Convert.ToDouble(this.Height) * 0.8));
+            btn_bejelentkezes.Location = new Point(Convert.ToInt32(Convert.ToDouble(this.Width) / 3 - btn_regisztracio.Width * 0.5), Convert.ToInt32(Convert.ToDouble(this.Height) * 0.8));
 
             btn_regisztracio.Click += new EventHandler(regisztracio);
             btn_bejelentkezes.Click += new EventHandler(bejelentkezes);
@@ -137,7 +153,43 @@ namespace Esemény_kezelő
 
         void bejelentkezes(object obj, EventArgs e)
         {
+            if (tb_nev.Text == string.Empty)
+            {
+                MessageBox.Show("Kérem adjon meg egy nevet!" + " " + tb_nev.Text);
+                return;
+            }
+            else if (tb_jelszo.Text == string.Empty)
+            {
+                MessageBox.Show("Kérem adja meg a jelszavát!");
+                return;
+            }
+                using (var conn = new MySqlConnection("server=127.0.0.1;uid=root;pwd=mysql;database=school_events"))
+                {
+                    conn.Open();
 
+                    string jelszo = tb_jelszo.Text;
+                    string hashed = "";
+
+                    using (var command = new MySqlCommand($"SELECT * FROM users WHERE users.username LIKE \"{tb_nev.Text}\";", conn))
+                    {
+                        using (var reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                hashed = reader.GetString(2);
+                            }
+                        }
+                    }
+
+
+                    if (BCrypt.Net.BCrypt.Verify(jelszo, hashed))
+                    {
+                        Controls.Clear();
+                        AlapUi();
+                    }
+                }
+
+            nev = tb_nev.Text;
         }
 
         void regisztracio(object obj, EventArgs e)
@@ -150,8 +202,8 @@ namespace Esemény_kezelő
             Label lbl_koszones = new Label();
             Label lbl_nev = new Label();
             Label lbl_jelszo = new Label();
-            TextBox tb_nev = new TextBox();
-            TextBox tb_jelszo = new TextBox();
+            tb_nev = new TextBox();
+            tb_jelszo = new TextBox();
             Button btn_regisztracio = new Button();
             Button btn_vissza = new Button();
             tb_nev.AutoSize = true;
@@ -162,7 +214,7 @@ namespace Esemény_kezelő
             lbl_nev.AutoSize = true;
             lbl_jelszo.AutoSize = true;
 
-            lbl_koszones.Text = "Kérlek jelentkezz be!";
+            lbl_koszones.Text = "Kérlek regisztrálj!";
             lbl_nev.Text = "Név:";
             lbl_jelszo.Text = "Jelszó:";
             btn_regisztracio.Text = "Regisztráció";
@@ -189,8 +241,8 @@ namespace Esemény_kezelő
             btn_vissza.FlatStyle = FlatStyle.Flat;
 
             lbl_koszones.Location = new Point(Convert.ToInt32(Convert.ToDouble(this.Width) / 2 - lbl_koszones.Width), Convert.ToInt32(Convert.ToDouble(this.Height) / 10 - lbl_koszones.Height));
-            lbl_nev.Location = new Point(Convert.ToInt32(Convert.ToDouble(this.Width) / 2 - lbl_nev.Width * 1.2), Convert.ToInt32(Convert.ToDouble(this.Height) / 2.7 - lbl_nev.Height));
-            lbl_jelszo.Location = new Point(Convert.ToInt32(Convert.ToDouble(this.Width) / 2 - lbl_jelszo.Width * 1.2), Convert.ToInt32(Convert.ToDouble(this.Height) / 3.6 - lbl_jelszo.Height));
+            lbl_jelszo.Location = new Point(Convert.ToInt32(Convert.ToDouble(this.Width) / 2 - lbl_nev.Width * 1.2), Convert.ToInt32(Convert.ToDouble(this.Height) / 2.7 - lbl_nev.Height));
+            lbl_nev.Location = new Point(Convert.ToInt32(Convert.ToDouble(this.Width) / 2 - lbl_jelszo.Width * 1.2), Convert.ToInt32(Convert.ToDouble(this.Height) / 3.6 - lbl_jelszo.Height));
             tb_jelszo.Location = new Point(Convert.ToInt32(Convert.ToDouble(this.Width) / 2 + tb_jelszo.Width * 0.1), Convert.ToInt32(Convert.ToDouble(this.Height) / 2.6 - tb_jelszo.Height));
             tb_nev.Location = new Point(Convert.ToInt32(Convert.ToDouble(this.Width) / 2 + tb_nev.Width * 0.1), Convert.ToInt32(Convert.ToDouble(this.Height) / 3.4 - tb_nev.Height));
             btn_regisztracio.Location = new Point(Convert.ToInt32(Convert.ToDouble(this.Width) / 1.5 - btn_regisztracio.Width * 0.5), Convert.ToInt32(Convert.ToDouble(this.Height) * 0.8));
@@ -225,15 +277,53 @@ namespace Esemény_kezelő
         {
             // regisztrálás
 
-            Controls.Clear();
+            if (tb_nev.Text == string.Empty)
+            {
+                MessageBox.Show("Kérem adjon meg egy nevet!" + " " + tb_nev.Text);
+                return;
+            }
+            else if (tb_jelszo.Text == string.Empty)
+            {
+                MessageBox.Show("Kérem adja meg a jelszavát!");
+                return;
+            }
+            using (var conn = new MySqlConnection("server=127.0.0.1;uid=root;pwd=mysql;database=school_events"))
+            {
+                conn.Open();
+
+                string jelszo = BCrypt.Net.BCrypt.HashPassword(tb_jelszo.Text);
+                string hashed = "";
+
+                using (var command = new MySqlCommand($"SELECT * FROM users WHERE users.username LIKE \"{tb_nev.Text}\";", conn))
+                {
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            hashed = reader.GetString(2);
+                        }
+                    }
+                }
+
+
+                if (BCrypt.Net.BCrypt.Verify(jelszo, hashed))
+                {
+                    Controls.Clear();
+                    AlapUi();
+                }
+            }
+
+            nev = tb_nev.Text;
+
 
             AlapUi();
 
-            //bejelentkezesUI();
         }
 
         void AlapUi()
         {
+            Controls.Clear();
+
             gradientLayoutPanel sidebar = new gradientLayoutPanel();
             gradientLayoutPanel header = new gradientLayoutPanel();
             Button Profile = new Button();
