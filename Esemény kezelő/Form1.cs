@@ -11,7 +11,29 @@ using System.Windows.Forms;
 
 namespace Esemény_kezelő
 {
-    public class gradientPanel : TableLayoutPanel
+    public class gradientLayoutPanel : TableLayoutPanel
+    {
+        public Color color1 { get; set; }
+        public Color color2 { get; set; }
+        public float Angle { get; set; }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            LinearGradientBrush brush = new LinearGradientBrush(this.ClientRectangle, this.color1, this.color2, this.Angle);
+            Graphics g = e.Graphics;
+            g.FillRectangle(brush, this.ClientRectangle);
+            base.OnPaint(e);
+        }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            this.ResumeLayout(false);
+
+        }
+    }
+
+    public class gradientPanel : Panel
     {
         public Color color1 { get; set; }
         public Color color2 { get; set; }
@@ -45,7 +67,7 @@ namespace Esemény_kezelő
         void bejelentkezesUI()
         {
             // controllok
-
+            gradientPanel hatter = new gradientPanel();
             Label lbl_koszones = new Label();
             Label lbl_nev = new Label();
             Label lbl_jelszo = new Label();
@@ -72,31 +94,49 @@ namespace Esemény_kezelő
             btn_bejelentkezes.Size = new Size(200, 50);
             btn_regisztracio.Size = new Size(200, 50);
 
-            lbl_koszones.Font = new Font("Arial", 16.0f);
-            lbl_nev.Font = new Font("Arial", 16.0f);
-            lbl_jelszo.Font = new Font("Arial", 16.0f);
+            lbl_jelszo.BackColor = Color.Transparent;
+            lbl_nev.BackColor = Color.Transparent;
+            lbl_koszones.BackColor = Color.Transparent;
+
+            lbl_koszones.Font = new Font("Candara", 20.0f);
+            lbl_nev.Font = new Font("Candara", 20.0f);
+            lbl_jelszo.Font = new Font("Candara", 20.0f);
             tb_nev.Font = new Font("Arial", 12.0f);
             tb_jelszo.Font = new Font("Arial", 12.0f);
             btn_regisztracio.Font = new Font("Arial", 16.0f);
             btn_bejelentkezes.Font = new Font("Arial", 16.0f);
 
             lbl_koszones.Location = new Point(Convert.ToInt32(Convert.ToDouble(this.Width) / 2 - lbl_koszones.Width), Convert.ToInt32(Convert.ToDouble(this.Height) / 10 - lbl_koszones.Height));
-            lbl_nev.Location = new Point(Convert.ToInt32(Convert.ToDouble(this.Width) / 2 - lbl_nev.Width * 1.2), Convert.ToInt32(Convert.ToDouble(this.Height) / 2.6 - lbl_nev.Height));
-            lbl_jelszo.Location = new Point(Convert.ToInt32(Convert.ToDouble(this.Width) / 2 - lbl_jelszo.Width * 1.2), Convert.ToInt32(Convert.ToDouble(this.Height) / 3.4 - lbl_jelszo.Height));
+            lbl_nev.Location = new Point(Convert.ToInt32(Convert.ToDouble(this.Width) / 2 - lbl_nev.Width * 1.2), Convert.ToInt32(Convert.ToDouble(this.Height) / 2.7 - lbl_nev.Height));
+            lbl_jelszo.Location = new Point(Convert.ToInt32(Convert.ToDouble(this.Width) / 2 - lbl_jelszo.Width * 1.2), Convert.ToInt32(Convert.ToDouble(this.Height) / 3.6 - lbl_jelszo.Height));
             tb_jelszo.Location = new Point(Convert.ToInt32(Convert.ToDouble(this.Width) / 2 + tb_jelszo.Width * 0.1), Convert.ToInt32(Convert.ToDouble(this.Height) / 2.6 - tb_jelszo.Height));
             tb_nev.Location = new Point(Convert.ToInt32(Convert.ToDouble(this.Width) / 2 + tb_nev.Width * 0.1), Convert.ToInt32(Convert.ToDouble(this.Height) / 3.4 - tb_nev.Height));
             btn_bejelentkezes.Location = new Point(Convert.ToInt32(Convert.ToDouble(this.Width) / 1.5 - btn_bejelentkezes.Width * 0.5), Convert.ToInt32(Convert.ToDouble(this.Height) * 0.8));
             btn_regisztracio.Location = new Point(Convert.ToInt32(Convert.ToDouble(this.Width) / 3 - btn_regisztracio.Width * 0.5), Convert.ToInt32(Convert.ToDouble(this.Height) * 0.8));
 
             btn_regisztracio.Click += new EventHandler(regisztracio);
+            btn_bejelentkezes.Click += new EventHandler(bejelentkezes);
 
-            Controls.Add(lbl_koszones);
-            Controls.Add(lbl_nev);
-            Controls.Add(lbl_jelszo);
-            Controls.Add(tb_nev);
-            Controls.Add(tb_jelszo);
-            Controls.Add(btn_regisztracio);
-            Controls.Add(btn_bejelentkezes);
+            btn_regisztracio.FlatStyle = FlatStyle.Flat;
+            btn_bejelentkezes.FlatStyle = FlatStyle.Flat;
+
+            hatter.color1 = Color.GreenYellow;
+            hatter.color2 = Color.White;
+            hatter.Angle = 75;
+            hatter.Dock = DockStyle.Fill;
+
+            hatter.Controls.Add(lbl_koszones);
+            hatter.Controls.Add(lbl_nev);
+            hatter.Controls.Add(lbl_jelszo);
+            hatter.Controls.Add(tb_nev);
+            hatter.Controls.Add(tb_jelszo);
+            hatter.Controls.Add(btn_regisztracio);
+            hatter.Controls.Add(btn_bejelentkezes);
+            Controls.Add(hatter);
+        }
+
+        void bejelentkezes(object obj, EventArgs e)
+        {
 
         }
 
@@ -106,6 +146,7 @@ namespace Esemény_kezelő
 
             Controls.Clear();
 
+            gradientPanel hatter = new gradientPanel();
             Label lbl_koszones = new Label();
             Label lbl_nev = new Label();
             Label lbl_jelszo = new Label();
@@ -132,17 +173,24 @@ namespace Esemény_kezelő
             btn_regisztracio.Size = new Size(200, 50);
             btn_vissza.Size = new Size(200, 50);
 
-            lbl_koszones.Font = new Font("Arial", 16.0f);
-            lbl_nev.Font = new Font("Arial", 16.0f);
-            lbl_jelszo.Font = new Font("Arial", 16.0f);
+            lbl_jelszo.BackColor = Color.Transparent;
+            lbl_nev.BackColor = Color.Transparent;
+            lbl_koszones.BackColor = Color.Transparent;
+
+            lbl_koszones.Font = new Font("Candara", 20.0f);
+            lbl_nev.Font = new Font("Candara", 20.0f);
+            lbl_jelszo.Font = new Font("Candara", 20.0f);
             tb_nev.Font = new Font("Arial", 12.0f);
             tb_jelszo.Font = new Font("Arial", 12.0f);
             btn_vissza.Font = new Font("Arial", 16.0f);
             btn_regisztracio.Font = new Font("Arial", 16.0f);
 
+            btn_regisztracio.FlatStyle = FlatStyle.Flat;
+            btn_vissza.FlatStyle = FlatStyle.Flat;
+
             lbl_koszones.Location = new Point(Convert.ToInt32(Convert.ToDouble(this.Width) / 2 - lbl_koszones.Width), Convert.ToInt32(Convert.ToDouble(this.Height) / 10 - lbl_koszones.Height));
-            lbl_nev.Location = new Point(Convert.ToInt32(Convert.ToDouble(this.Width) / 2 - lbl_nev.Width * 1.2), Convert.ToInt32(Convert.ToDouble(this.Height) / 2.6 - lbl_nev.Height));
-            lbl_jelszo.Location = new Point(Convert.ToInt32(Convert.ToDouble(this.Width) / 2 - lbl_jelszo.Width * 1.2), Convert.ToInt32(Convert.ToDouble(this.Height) / 3.4 - lbl_jelszo.Height));
+            lbl_nev.Location = new Point(Convert.ToInt32(Convert.ToDouble(this.Width) / 2 - lbl_nev.Width * 1.2), Convert.ToInt32(Convert.ToDouble(this.Height) / 2.7 - lbl_nev.Height));
+            lbl_jelszo.Location = new Point(Convert.ToInt32(Convert.ToDouble(this.Width) / 2 - lbl_jelszo.Width * 1.2), Convert.ToInt32(Convert.ToDouble(this.Height) / 3.6 - lbl_jelszo.Height));
             tb_jelszo.Location = new Point(Convert.ToInt32(Convert.ToDouble(this.Width) / 2 + tb_jelszo.Width * 0.1), Convert.ToInt32(Convert.ToDouble(this.Height) / 2.6 - tb_jelszo.Height));
             tb_nev.Location = new Point(Convert.ToInt32(Convert.ToDouble(this.Width) / 2 + tb_nev.Width * 0.1), Convert.ToInt32(Convert.ToDouble(this.Height) / 3.4 - tb_nev.Height));
             btn_regisztracio.Location = new Point(Convert.ToInt32(Convert.ToDouble(this.Width) / 1.5 - btn_regisztracio.Width * 0.5), Convert.ToInt32(Convert.ToDouble(this.Height) * 0.8));
@@ -151,13 +199,19 @@ namespace Esemény_kezelő
             btn_vissza.Click += new EventHandler(vissza);
             btn_regisztracio.Click += new EventHandler(regisztralas);
 
-            Controls.Add(lbl_koszones);
-            Controls.Add(lbl_nev);
-            Controls.Add(lbl_jelszo);
-            Controls.Add(tb_nev);
-            Controls.Add(tb_jelszo);
-            Controls.Add(btn_vissza);
-            Controls.Add(btn_regisztracio);
+            hatter.color1 = Color.GreenYellow;
+            hatter.color2 = Color.White;
+            hatter.Angle = 75;
+            hatter.Dock = DockStyle.Fill;
+
+            hatter.Controls.Add(lbl_koszones);
+            hatter.Controls.Add(lbl_nev);
+            hatter.Controls.Add(lbl_jelszo);
+            hatter.Controls.Add(tb_nev);
+            hatter.Controls.Add(tb_jelszo);
+            hatter.Controls.Add(btn_vissza);
+            hatter.Controls.Add(btn_regisztracio);
+            Controls.Add(hatter);
         }
 
         void vissza(object obj, EventArgs e)
@@ -180,8 +234,8 @@ namespace Esemény_kezelő
 
         void AlapUi()
         {
-            gradientPanel sidebar = new gradientPanel();
-            gradientPanel header = new gradientPanel();
+            gradientLayoutPanel sidebar = new gradientLayoutPanel();
+            gradientLayoutPanel header = new gradientLayoutPanel();
             Button Profile = new Button();
             Button atnezes = new Button();
             Button hozzadas = new Button();
@@ -202,7 +256,7 @@ namespace Esemény_kezelő
             sidebar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             sidebar.color1 = Color.GreenYellow;
             sidebar.color2 = Color.White;
-            sidebar.Angle = 90;
+            sidebar.Angle = 60;
 
             header.BackColor = System.Drawing.Color.CadetBlue;
             header.Dock = System.Windows.Forms.DockStyle.Top;
@@ -216,6 +270,7 @@ namespace Esemény_kezelő
             header.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             header.color1 = Color.GreenYellow;
             header.color2 = Color.White;
+            header.Angle = 20;
 
             Profile.Text = "PlaceHolder";
             Profile.Image = null;

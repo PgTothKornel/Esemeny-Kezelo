@@ -51,4 +51,4 @@ C:\Users\tothKornel\Documents\GitHub\Esemeny Kezelo\Esemény kezelő\obj\Debug\E
 C:\Users\tothKornel\Documents\GitHub\Esemeny Kezelo\Esemény kezelő\obj\Debug\Esem_ny .D96813CA.Up2Date
 C:\Users\tothKornel\Documents\GitHub\Esemeny Kezelo\Esemény kezelő\obj\Debug\Esemény kezelő.exe
 C:\Users\tothKornel\Documents\GitHub\Esemeny Kezelo\Esemény kezelő\obj\Debug\Esemény kezelő.pdb
-C:\Users\tothKornel\Documents\GitHub\Esemeny Kezelo\Esemény kezelő\obj\Debug\Esemény_kezelő.gradientPanel.resources
+C:\Users\tothKornel\Documents\GitHub\Esemeny Kezelo\Esemény kezelő\obj\Debug\Esemény_kezelő.gradientLayoutPanel.resources
