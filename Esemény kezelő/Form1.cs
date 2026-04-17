@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,27 @@ using System.Windows.Forms;
 
 namespace Esemény_kezelő
 {
+    public class gradientPanel : TableLayoutPanel
+    {
+        public Color color1 { get; set; }
+        public Color color2 { get; set; }
+        public float Angle { get; set; }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            LinearGradientBrush brush = new LinearGradientBrush(this.ClientRectangle, this.color1, this.color2, this.Angle);
+            Graphics g = e.Graphics;
+            g.FillRectangle(brush, this.ClientRectangle);
+            base.OnPaint(e);
+        }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            this.ResumeLayout(false);
+
+        }
+    }
     public partial class Form1 : Form
     {
         static Panel tarto = new Panel();
@@ -158,8 +180,8 @@ namespace Esemény_kezelő
 
         void AlapUi()
         {
-            TableLayoutPanel sidebar = new TableLayoutPanel();
-            TableLayoutPanel header = new TableLayoutPanel();
+            gradientPanel sidebar = new gradientPanel();
+            gradientPanel header = new gradientPanel();
             Button Profile = new Button();
             Button atnezes = new Button();
             Button hozzadas = new Button();
@@ -178,7 +200,9 @@ namespace Esemény_kezelő
             sidebar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             sidebar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
             sidebar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            
+            sidebar.color1 = Color.GreenYellow;
+            sidebar.color2 = Color.White;
+            sidebar.Angle = 90;
 
             header.BackColor = System.Drawing.Color.CadetBlue;
             header.Dock = System.Windows.Forms.DockStyle.Top;
@@ -190,7 +214,8 @@ namespace Esemény_kezelő
             header.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             header.RowCount = 1;
             header.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-
+            header.color1 = Color.GreenYellow;
+            header.color2 = Color.White;
 
             Profile.Text = "PlaceHolder";
             Profile.Image = null;
@@ -231,8 +256,8 @@ namespace Esemény_kezelő
         {
             Form atnezes = new Atnezes();
             atnezes.TopLevel = false;
-            
 
+            tarto.Controls.Clear();
             tarto.Controls.Add(atnezes);
             atnezes.BringToFront();
             atnezes.Show();
@@ -240,7 +265,13 @@ namespace Esemény_kezelő
 
         void hozzadasForm(object obj, EventArgs e)
         {
+            Form hozzadas = new Hozzadas();
+            hozzadas.TopLevel = false;
 
+            tarto.Controls.Clear();
+            tarto.Controls.Add(hozzadas);
+            hozzadas.BringToFront();
+            hozzadas.Show();
         }
     }
 }
