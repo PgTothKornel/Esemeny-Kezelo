@@ -44,17 +44,19 @@ CREATE TABLE participants (
 
 
 INSERT INTO users (id, username, password, admin_privileges) VALUES
-(1, 'rokolya_csaba', '$2a$12$O6MwSAdAqfPGvzdC0ZZZLuiQXRdWjQU8UGljOFkgjmjRiIwLLzA7y', TRUE), --password
-(2, 'pasztor_zoltan', '$2a$12$jCzhELJMcLKIUIR6vHqxyuJuR4GXtiq5Uv.TzRI6yo.dvVx1hlwfy', TRUE), --pza_gnd
-(3, 'kiss_gabor', '$2a$12$PxxnINJtYVrw826cHrPSNu6fAA3HJXFmcw2.PGPrNS05PBlOF8sC.', TRUE), --kgi123
-(4, 'pozsar_robert', '$2a$12$nhETBVgxvdcKeWddb1C2feII27kgQOg6rqYNBAzxEGbgEb7ryzGEm', FALSE), --robi0621
-(5, 'hodi_agnes', '$2a$12$nM6qoCBhQcSuptedAKemFe3oWqWJIJmYby2lbG3YD7XByAMjK/JQi', FALSE), --olddmeg
-(6, 'simo_zsuzsanna', '$2a$12$J9IB21z9AIrJFKL6LyeGuudJHXg65txaaPJPK5HCPp0SaszJwgvA2', FALSE), --random
-(7, 'kocsis_noel', '$2a$12$kD48QRdZH2hlBuwUbwBc3e.QWVDw0FcsSRqzqXxzb1vNgd4IfLaQy', FALSE), --kocsi
-(8, 'toth_kornel', '$2a$12$oe2fK1z7pIwNxc3MA5qmJ.Ak/2vnb36UjN7jMzfi6ZrFQh92x99M6', FALSE), --igen123
-(9, 'tapai-fero_marcell', '$2a$12$UwnpB6KQi9k3Mc4fht4xtuH/GRW0ei1DjhL6BIgdme71.E7JXmfnC', FALSE), --nemtom123
-(10, 'gyongyosi_csaba', '$2a$12$PdEzxzvnHrR.klvHwzWXQOReCZhpoqVqCyUbipYb68IKc1LN.faMG', FALSE), --silencione
-(10, 'admin', '$2a$12$oa0eB5sMBRukkuaf1BXFN./LkCcSGcOcbHs5GQw62B4BKQtttRhtG', TRUE); --admin
+(1, 'rokolya_csaba', '$2a$12$O6MwSAdAqfPGvzdC0ZZZLuiQXRdWjQU8UGljOFkgjmjRiIwLLzA7y', TRUE), -- password
+(2, 'pasztor_zoltan', '$2a$12$jCzhELJMcLKIUIR6vHqxyuJuR4GXtiq5Uv.TzRI6yo.dvVx1hlwfy', TRUE), -- pza_gnd
+(3, 'kiss_gabor', '$2a$12$PxxnINJtYVrw826cHrPSNu6fAA3HJXFmcw2.PGPrNS05PBlOF8sC.', TRUE), -- kgi123
+(4, 'pozsar_robert', '$2a$12$nhETBVgxvdcKeWddb1C2feII27kgQOg6rqYNBAzxEGbgEb7ryzGEm', FALSE), -- robi0621
+(5, 'hodi_agnes', '$2a$12$nM6qoCBhQcSuptedAKemFe3oWqWJIJmYby2lbG3YD7XByAMjK/JQi', FALSE), -- olddmeg
+(6, 'simo_zsuzsanna', '$2a$12$J9IB21z9AIrJFKL6LyeGuudJHXg65txaaPJPK5HCPp0SaszJwgvA2', FALSE), -- random
+(7, 'kocsis_noel', '$2a$12$kD48QRdZH2hlBuwUbwBc3e.QWVDw0FcsSRqzqXxzb1vNgd4IfLaQy', FALSE), -- kocsi
+(8, 'toth_kornel', '$2a$12$oe2fK1z7pIwNxc3MA5qmJ.Ak/2vnb36UjN7jMzfi6ZrFQh92x99M6', FALSE), -- igen123
+(9, 'tapai-fero_marcell', '$2a$12$UwnpB6KQi9k3Mc4fht4xtuH/GRW0ei1DjhL6BIgdme71.E7JXmfnC', FALSE), -- nemtom123
+(10, 'gyongyosi_csaba', '$2a$12$PdEzxzvnHrR.klvHwzWXQOReCZhpoqVqCyUbipYb68IKc1LN.faMG', FALSE), -- silencione
+(11, 'admin', '$2a$12$oa0eB5sMBRukkuaf1BXFN./LkCcSGcOcbHs5GQw62B4BKQtttRhtG', TRUE); -- admin
+
+
 
 INSERT INTO categories (id, category) VALUES
 (1, 'Sport'),
