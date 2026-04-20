@@ -3,12 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\tothKornel\\Documents\\GitHub\\Esemeny Kezelo\\Esem\u00E9ny kezel\u0151\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6C2BBAA3-61CA-4A24-B7CE-5A4A872AE571}|Esem\u00E9ny kezel\u0151.csproj|c:\\users\\tothkornel\\documents\\github\\esemeny kezelo\\esem\u00E9ny kezel\u0151\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6C2BBAA3-61CA-4A24-B7CE-5A4A872AE571}|Esem\u00E9ny kezel\u0151.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6C2BBAA3-61CA-4A24-B7CE-5A4A872AE571}|Esem\u00E9ny kezel\u0151.csproj|c:\\users\\tothkornel\\documents\\github\\esemeny kezelo\\esem\u00E9ny kezel\u0151\\atnezes.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6C2BBAA3-61CA-4A24-B7CE-5A4A872AE571}|Esem\u00E9ny kezel\u0151.csproj|solutionrelative:atnezes.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6C2BBAA3-61CA-4A24-B7CE-5A4A872AE571}|Esem\u00E9ny kezel\u0151.csproj|C:\\Users\\tothKornel\\Documents\\GitHub\\Esemeny Kezelo\\Esem\u00E9ny kezel\u0151\\atnezes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C2BBAA3-61CA-4A24-B7CE-5A4A872AE571}|Esem\u00E9ny kezel\u0151.csproj|solutionrelative:atnezes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6C2BBAA3-61CA-4A24-B7CE-5A4A872AE571}|Esem\u00E9ny kezel\u0151.csproj|C:\\Users\\tothKornel\\Documents\\GitHub\\Esemeny Kezelo\\Esem\u00E9ny kezel\u0151\\atnezes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -19,8 +15,16 @@
       "RelativeMoniker": "D:0:0:{6C2BBAA3-61CA-4A24-B7CE-5A4A872AE571}|Esem\u00E9ny kezel\u0151.csproj|solutionrelative:hozzadas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6C2BBAA3-61CA-4A24-B7CE-5A4A872AE571}|Esem\u00E9ny kezel\u0151.csproj|C:\\Users\\tothKornel\\Documents\\GitHub\\Esemeny Kezelo\\Esem\u00E9ny kezel\u0151\\atnezes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6C2BBAA3-61CA-4A24-B7CE-5A4A872AE571}|Esem\u00E9ny kezel\u0151.csproj|solutionrelative:atnezes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6C2BBAA3-61CA-4A24-B7CE-5A4A872AE571}|Esem\u00E9ny kezel\u0151.csproj|c:\\users\\tothkornel\\documents\\github\\esemeny kezelo\\esem\u00E9ny kezel\u0151\\hozzadas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C2BBAA3-61CA-4A24-B7CE-5A4A872AE571}|Esem\u00E9ny kezel\u0151.csproj|solutionrelative:hozzadas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C2BBAA3-61CA-4A24-B7CE-5A4A872AE571}|Esem\u00E9ny kezel\u0151.csproj|C:\\Users\\tothKornel\\Documents\\GitHub\\Esemeny Kezelo\\Esem\u00E9ny kezel\u0151\\atnezes.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C2BBAA3-61CA-4A24-B7CE-5A4A872AE571}|Esem\u00E9ny kezel\u0151.csproj|solutionrelative:atnezes.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C2BBAA3-61CA-4A24-B7CE-5A4A872AE571}|Esem\u00E9ny kezel\u0151.csproj|c:\\users\\tothkornel\\documents\\github\\esemeny kezelo\\esem\u00E9ny kezel\u0151\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C2BBAA3-61CA-4A24-B7CE-5A4A872AE571}|Esem\u00E9ny kezel\u0151.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6C2BBAA3-61CA-4A24-B7CE-5A4A872AE571}|Esem\u00E9ny kezel\u0151.csproj|C:\\Users\\tothKornel\\Documents\\GitHub\\Esemeny Kezelo\\Esem\u00E9ny kezel\u0151\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -34,50 +38,63 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
+              "Title": "Hozzadas.cs",
+              "DocumentMoniker": "C:\\Users\\tothKornel\\Documents\\GitHub\\Esemeny Kezelo\\Esem\u00E9ny kezel\u0151\\Hozzadas.cs",
+              "RelativeDocumentMoniker": "Hozzadas.cs",
+              "ToolTip": "C:\\Users\\tothKornel\\Documents\\GitHub\\Esemeny Kezelo\\Esem\u00E9ny kezel\u0151\\Hozzadas.cs",
+              "RelativeToolTip": "Hozzadas.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-20T09:03:28.567Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "Atnezes.Designer.cs",
               "DocumentMoniker": "C:\\Users\\tothKornel\\Documents\\GitHub\\Esemeny Kezelo\\Esem\u00E9ny kezel\u0151\\Atnezes.Designer.cs",
               "RelativeDocumentMoniker": "Atnezes.Designer.cs",
               "ToolTip": "C:\\Users\\tothKornel\\Documents\\GitHub\\Esemeny Kezelo\\Esem\u00E9ny kezel\u0151\\Atnezes.Designer.cs",
               "RelativeToolTip": "Atnezes.Designer.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAxwCAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABMAAAAAAAAAAAAgwGgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-20T08:46:04.128Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
               "Title": "Form1.cs",
               "DocumentMoniker": "C:\\Users\\tothKornel\\Documents\\GitHub\\Esemeny Kezelo\\Esem\u00E9ny kezel\u0151\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
               "ToolTip": "C:\\Users\\tothKornel\\Documents\\GitHub\\Esemeny Kezelo\\Esem\u00E9ny kezel\u0151\\Form1.cs",
               "RelativeToolTip": "Form1.cs",
-              "ViewState": "AgIAAFcBAAAAAAAAAAAkwG4BAAASAAAAAAAAAA==",
+              "ViewState": "AgIAALwBAAAAAAAAAAAswO0BAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-13T08:51:54.173Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "Atnezes.cs",
               "DocumentMoniker": "C:\\Users\\tothKornel\\Documents\\GitHub\\Esemeny Kezelo\\Esem\u00E9ny kezel\u0151\\Atnezes.cs",
               "RelativeDocumentMoniker": "Atnezes.cs",
               "ToolTip": "C:\\Users\\tothKornel\\Documents\\GitHub\\Esemeny Kezelo\\Esem\u00E9ny kezel\u0151\\Atnezes.cs",
               "RelativeToolTip": "Atnezes.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAmwBkAAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-13T08:47:21.532Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Atnezes.cs [Design]",
               "DocumentMoniker": "C:\\Users\\tothKornel\\Documents\\GitHub\\Esemeny Kezelo\\Esem\u00E9ny kezel\u0151\\Atnezes.cs",
               "RelativeDocumentMoniker": "Atnezes.cs",
@@ -89,7 +106,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "Hozzadas.cs [Design]",
               "DocumentMoniker": "C:\\Users\\tothKornel\\Documents\\GitHub\\Esemeny Kezelo\\Esem\u00E9ny kezel\u0151\\Hozzadas.cs",
               "RelativeDocumentMoniker": "Hozzadas.cs",
@@ -101,7 +118,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Form1.cs [Design]",
               "DocumentMoniker": "C:\\Users\\tothKornel\\Documents\\GitHub\\Esemeny Kezelo\\Esem\u00E9ny kezel\u0151\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",

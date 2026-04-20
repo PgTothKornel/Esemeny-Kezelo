@@ -90,3 +90,4 @@ C:\Users\tapai-feromarcell\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\obj\
 C:\Users\tapai-feromarcell\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\obj\Debug\Esem_ny .D96813CA.Up2Date
 C:\Users\tapai-feromarcell\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\obj\Debug\Esemény kezelő.exe
 C:\Users\tapai-feromarcell\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\obj\Debug\Esemény kezelő.pdb
+C:\Users\tothKornel\Documents\GitHub\Esemeny Kezelo\Esemény kezelő\obj\Debug\Esemény_kezelő.Hozzadas.resources
