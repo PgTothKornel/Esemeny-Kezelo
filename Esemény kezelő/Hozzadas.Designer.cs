@@ -32,8 +32,8 @@
             this.rtb_leriras = new System.Windows.Forms.RichTextBox();
             this.cb_kategoria = new System.Windows.Forms.ComboBox();
             this.cb_helyszin = new System.Windows.Forms.ComboBox();
-            this.tb_torol = new System.Windows.Forms.Button();
-            this.tb_hozzaad = new System.Windows.Forms.Button();
+            this.btn_torol = new System.Windows.Forms.Button();
+            this.btn_hozzaad = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -71,23 +71,25 @@
             this.cb_helyszin.Size = new System.Drawing.Size(380, 21);
             this.cb_helyszin.TabIndex = 3;
             // 
-            // tb_torol
+            // btn_torol
             // 
-            this.tb_torol.Location = new System.Drawing.Point(187, 346);
-            this.tb_torol.Name = "tb_torol";
-            this.tb_torol.Size = new System.Drawing.Size(114, 52);
-            this.tb_torol.TabIndex = 4;
-            this.tb_torol.Text = "Törlés";
-            this.tb_torol.UseVisualStyleBackColor = true;
+            this.btn_torol.Location = new System.Drawing.Point(187, 346);
+            this.btn_torol.Name = "btn_torol";
+            this.btn_torol.Size = new System.Drawing.Size(114, 52);
+            this.btn_torol.TabIndex = 4;
+            this.btn_torol.Text = "Törlés";
+            this.btn_torol.UseVisualStyleBackColor = true;
+            this.btn_torol.Click += new System.EventHandler(this.tb_torol_Click);
             // 
-            // tb_hozzaad
+            // btn_hozzaad
             // 
-            this.tb_hozzaad.Location = new System.Drawing.Point(307, 346);
-            this.tb_hozzaad.Name = "tb_hozzaad";
-            this.tb_hozzaad.Size = new System.Drawing.Size(380, 52);
-            this.tb_hozzaad.TabIndex = 5;
-            this.tb_hozzaad.Text = "Hozzáadás";
-            this.tb_hozzaad.UseVisualStyleBackColor = true;
+            this.btn_hozzaad.Location = new System.Drawing.Point(307, 346);
+            this.btn_hozzaad.Name = "btn_hozzaad";
+            this.btn_hozzaad.Size = new System.Drawing.Size(380, 52);
+            this.btn_hozzaad.TabIndex = 5;
+            this.btn_hozzaad.Text = "Hozzáadás";
+            this.btn_hozzaad.UseVisualStyleBackColor = true;
+            this.btn_hozzaad.Click += new System.EventHandler(this.btn_hozzaad_Click);
             // 
             // label1
             // 
@@ -138,8 +140,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.tb_hozzaad);
-            this.Controls.Add(this.tb_torol);
+            this.Controls.Add(this.btn_hozzaad);
+            this.Controls.Add(this.btn_torol);
             this.Controls.Add(this.cb_helyszin);
             this.Controls.Add(this.cb_kategoria);
             this.Controls.Add(this.rtb_leriras);
@@ -158,8 +160,8 @@
         private System.Windows.Forms.RichTextBox rtb_leriras;
         private System.Windows.Forms.ComboBox cb_kategoria;
         private System.Windows.Forms.ComboBox cb_helyszin;
-        private System.Windows.Forms.Button tb_torol;
-        private System.Windows.Forms.Button tb_hozzaad;
+        private System.Windows.Forms.Button btn_torol;
+        private System.Windows.Forms.Button btn_hozzaad;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;

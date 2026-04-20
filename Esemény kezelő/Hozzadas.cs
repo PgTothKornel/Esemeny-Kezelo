@@ -19,11 +19,15 @@ namespace Esemény_kezelő
             InitializeComponent();
         }
 
+        public static string connstring = "server=127.0.0.1;uid=root;pwd=mysql;database=school_events";
         private void Hozzadas_Load(object sender, EventArgs e)
         {
-            string connstring = "server=127.0.0.1;uid=root;pwd=mysql;database=school_events";
             string sql = "SELECT categories.category FROM categories;";
             
+            cb_kategoria.Items.Clear();
+            cb_kategoria.Items.Add("");
+            cb_helyszin.Items.Clear();
+            cb_helyszin.Items.Add("");
             using (var conn = new MySqlConnection(connstring))
             {
                 conn.Open();   
@@ -38,7 +42,48 @@ namespace Esemény_kezelő
                     }
                 }
             }
+            sql = "SELECT locations.location FROM locations;";
+            using (var conn = new MySqlConnection(connstring))
+            {
+                conn.Open();   
+                using (var cmd = new MySqlCommand(sql, conn))
+                {
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            cb_helyszin.Items.Add(reader.GetString(0));
+                        }
+                    }
+                }
+            }
 
+
+        }
+
+        private void tb_torol_Click(object sender, EventArgs e)
+        {
+            tb_nev.Text = "";
+            rtb_leriras.Text = "";
+            cb_kategoria.SelectedIndex = 0;
+            cb_helyszin.SelectedIndex = 0;
+        }
+
+        private void btn_hozzaad_Click(object sender, EventArgs e)
+        {
+            string sql = "";
+
+            using (var conn = new MySqlConnection(connstring))
+            {
+                conn.Open();
+                using (var cmd = new MySqlCommand(sql, conn))
+                {
+                    using (var reader = cmd.ExecuteReader())
+                    {
+
+                    }
+                }
+            }
 
         }
     }
