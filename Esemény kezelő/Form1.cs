@@ -1,20 +1,44 @@
-﻿using MySqlConnector;
+﻿using BCrypt;
+using BCrypt.Net;
+using Esemény_kezelő.Properties;
+using MySqlConnector;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using BCrypt;
-using BCrypt.Net;
 
 namespace Esemény_kezelő
 {
     public class gradientLayoutPanel : TableLayoutPanel
+    {
+        public Color color1 { get; set; }
+        public Color color2 { get; set; }
+        public float Angle { get; set; }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            LinearGradientBrush brush = new LinearGradientBrush(this.ClientRectangle, this.color1, this.color2, this.Angle);
+            Graphics g = e.Graphics;
+            g.FillRectangle(brush, this.ClientRectangle);
+            base.OnPaint(e);
+        }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            this.ResumeLayout(false);
+
+        }
+    }
+    public class gradientMenu: MenuStrip
     {
         public Color color1 { get; set; }
         public Color color2 { get; set; }
@@ -67,16 +91,45 @@ namespace Esemény_kezelő
         {
             InitializeComponent();
 
+            bool kell = true;
+
             using (var conn = new MySqlConnection("server=127.0.0.1;uid=root;pwd=mysql;"))
             {
                 conn.Open();
 
-                using (var command = new MySqlCommand("CREATE DATABASE IF NOT EXISTS school_events;",conn))
+                using (var check = new MySqlCommand("SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA;", conn))
+
+                using (var reader = check.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        if (reader.GetValue(0).ToString() == "school_events")
+                        {
+                            kell = false;
+                        }
+                        //MessageBox.Show(reader.GetValue(0).ToString());
+                    }
+                }
+
+                if (kell) { 
+                using (var command = new MySqlCommand("DROP DATABASE IF EXISTS school_events;CREATE DATABASE if not EXISTS school_events;", conn))
                 {
                     command.ExecuteNonQuery();
                 }
+                }
             }
 
+            if (kell) { 
+            using (var conn = new MySqlConnection("server=127.0.0.1;uid=root;pwd=mysql;database=school_events"))
+            {
+                conn.Open();
+
+                using (var cmd = new MySqlCommand(File.ReadAllText("database.sql"),conn))
+                {
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            }
             bejelentkezesUI();
         }
 
@@ -98,7 +151,9 @@ namespace Esemény_kezelő
             lbl_koszones.AutoSize = true;
             lbl_nev.AutoSize = true;
             lbl_jelszo.AutoSize = true;
-            
+
+            tb_jelszo.PasswordChar = '*';
+
             lbl_koszones.Text = "Kérlek jelentkezz be!";
             lbl_nev.Text = "Név:";
             lbl_jelszo.Text = "Jelszó:";
@@ -181,15 +236,14 @@ namespace Esemény_kezelő
                         }
                     }
 
+                nev = tb_nev.Text;
 
-                    if (BCrypt.Net.BCrypt.Verify(jelszo, hashed))
+                if (BCrypt.Net.BCrypt.Verify(jelszo, hashed))
                     {
                         Controls.Clear();
                         AlapUi();
                     }
                 }
-
-            nev = tb_nev.Text;
         }
 
         void regisztracio(object obj, EventArgs e)
@@ -213,6 +267,8 @@ namespace Esemény_kezelő
             lbl_koszones.AutoSize = true;
             lbl_nev.AutoSize = true;
             lbl_jelszo.AutoSize = true;
+
+            tb_jelszo.PasswordChar = '*';
 
             lbl_koszones.Text = "Kérlek regisztrálj!";
             lbl_nev.Text = "Név:";
@@ -291,33 +347,41 @@ namespace Esemény_kezelő
             {
                 conn.Open();
 
-                string jelszo = BCrypt.Net.BCrypt.HashPassword(tb_jelszo.Text);
-                string hashed = "";
+                nev = tb_nev.Text;
 
-                using (var command = new MySqlCommand($"SELECT * FROM users WHERE users.username LIKE \"{tb_nev.Text}\";", conn))
+                using (var command = new MySqlCommand($"SELECT * FROM users;", conn))
                 {
                     using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            hashed = reader.GetString(2);
+                            if (nev == reader.GetValue(1).ToString())
+                            {
+                                MessageBox.Show("Kérem válasszon másik felhasználónevet, ez már foglalt!");
+                                return;
+                            }
                         }
                     }
                 }
 
+                //MessageBox.Show(BCrypt.Net.BCrypt.HashPassword(tb_jelszo.Text));
 
-                if (BCrypt.Net.BCrypt.Verify(jelszo, hashed))
-                {
-                    Controls.Clear();
-                    AlapUi();
-                }
+                
             }
 
-            nev = tb_nev.Text;
+            using (var conn = new MySqlConnection("server = 127.0.0.1; uid = root; pwd = mysql; database = school_events"))
+            {
+                conn.Open();
 
+                string jelszo = BCrypt.Net.BCrypt.HashPassword(tb_jelszo.Text, BCrypt.Net.BCrypt.GenerateSalt());
 
+                using (var cmd = new MySqlCommand($"INSERT INTO users VALUES(0, \'{nev}\', \'{jelszo}\', 0);", conn))
+                {
+                    cmd.ExecuteNonQuery();
+                }
+            }
+              
             AlapUi();
-
         }
 
         void AlapUi()
@@ -325,11 +389,11 @@ namespace Esemény_kezelő
             Controls.Clear();
 
             gradientLayoutPanel sidebar = new gradientLayoutPanel();
-            gradientLayoutPanel header = new gradientLayoutPanel();
-            Button Profile = new Button();
+            gradientMenu header = new gradientMenu();
             Button atnezes = new Button();
             Button hozzadas = new Button();
-
+            ToolStripMenuItem menuItem = new ToolStripMenuItem();
+            ToolStripMenuItem kijelentkezes = new ToolStripMenuItem();
 
             sidebar.BackColor = System.Drawing.Color.CadetBlue;
             sidebar.Dock = System.Windows.Forms.DockStyle.Left;
@@ -348,27 +412,34 @@ namespace Esemény_kezelő
             sidebar.color2 = Color.White;
             sidebar.Angle = 60;
 
-            header.BackColor = System.Drawing.Color.CadetBlue;
-            header.Dock = System.Windows.Forms.DockStyle.Top;
-            header.Location = new System.Drawing.Point(0, 0);
-            header.Name = "panel3";
-            header.Size = new System.Drawing.Size(this.Width, Convert.ToInt32(this.Height * 0.1));
-            header.ColumnCount = 1;
-            header.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            header.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            header.RowCount = 1;
-            header.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             header.color1 = Color.GreenYellow;
             header.color2 = Color.White;
             header.Angle = 20;
+            header.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            menuItem});
+            header.Location = new System.Drawing.Point(0, 0);
+            header.Name = "menuStrip1";
+            header.Size = new System.Drawing.Size(533, 36);
+            header.TabIndex = 0;
+            header.Text = "menuStrip1";
 
-            Profile.Text = "PlaceHolder";
-            Profile.Image = null;
-            Profile.ImageAlign = ContentAlignment.MiddleRight;
-            Profile.TextAlign = ContentAlignment.MiddleLeft;
-            Profile.Size = new Size(Convert.ToInt32(header.Width * 0.3), header.Height);
-            Profile.TextImageRelation = TextImageRelation.TextBeforeImage;
+            menuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            menuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            kijelentkezes});
+            menuItem.Font = new System.Drawing.Font("Segoe UI", 15F);
+            menuItem.Image = Image.FromFile("profil.jpg");
+            menuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            menuItem.Name = "toolStripMenuItem1";
+            menuItem.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            menuItem.Size = new System.Drawing.Size(75, 32);
+            menuItem.Text = nev;
+            menuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
 
+            kijelentkezes.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            kijelentkezes.Name = "kijelentkezésToolStripMenuItem";
+            kijelentkezes.Size = new System.Drawing.Size(196, 32);
+            kijelentkezes.Text = "Kijelentkezés";
+            kijelentkezes.Click += new System.EventHandler(kijelentkezesGomb);
 
             atnezes.Text = "Események nézése";
             atnezes.Size = new Size(sidebar.Width, Convert.ToInt32(sidebar.Height * 0.1));
@@ -389,12 +460,18 @@ namespace Esemény_kezelő
 
             Controls.Add(header);
             Controls.Add(sidebar);
-            header.Controls.Add(Profile);
             sidebar.Controls.Add(atnezes);
             sidebar.Controls.Add(hozzadas);
             Controls.Add(tarto);
 
             tarto.Controls.Clear();
+        }
+
+        void kijelentkezesGomb(object obj, EventArgs e)
+        {
+            Controls.Clear();
+
+            bejelentkezesUI();
         }
 
         void atnezesForm(object obj, EventArgs e)
