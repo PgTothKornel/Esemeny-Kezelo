@@ -87,6 +87,7 @@ namespace Esemény_kezelő
         static TextBox tb_nev = new TextBox();
         static TextBox tb_jelszo = new TextBox();
         public static string nev = "";
+        public static bool admin = false;
         public Form1()
         {
             InitializeComponent();
@@ -232,6 +233,8 @@ namespace Esemény_kezelő
                             while (reader.Read())
                             {
                                 hashed = reader.GetString(2);
+
+                            if (reader.GetValue(3).ToString() == "1") admin = true;
                             }
                         }
                     }
