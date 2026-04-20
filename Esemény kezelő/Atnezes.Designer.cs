@@ -41,6 +41,7 @@
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -76,15 +77,15 @@
             this.textBox1.Location = new System.Drawing.Point(265, 55);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.Size = new System.Drawing.Size(155, 20);
             this.textBox1.TabIndex = 2;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(471, 55);
+            this.textBox2.Location = new System.Drawing.Point(426, 55);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.Size = new System.Drawing.Size(145, 20);
             this.textBox2.TabIndex = 3;
             // 
             // button1
@@ -155,6 +156,16 @@
             this.label3.TabIndex = 11;
             this.label3.Text = "Helyszín:";
             // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.button3.Location = new System.Drawing.Point(314, 369);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(209, 33);
+            this.button3.TabIndex = 13;
+            this.button3.Text = "Mentés";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
             // Atnezes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -173,6 +184,7 @@
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.button3);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Atnezes";
             this.Text = "Atnezes";
@@ -199,5 +211,6 @@
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button3;
     }
 }

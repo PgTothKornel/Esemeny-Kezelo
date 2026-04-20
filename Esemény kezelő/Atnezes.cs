@@ -18,6 +18,7 @@ namespace Esemény_kezelő
     public partial class Atnezes : Form
     {
         public List<string> leirasok = new List<string>(), nevek = new List<string>(), keszitok = new List<string>(), datumok = new List<string>(), kategoriak = new List<string>(), helyek = new List<string>();
+        int index = 0;
         public Atnezes()
         {
             InitializeComponent();
@@ -35,7 +36,10 @@ namespace Esemény_kezelő
                 textBox3.ReadOnly = true;
                 textBox4.ReadOnly = true;
                 textBox5.ReadOnly = true;
+                button3.Visible = false;
             }
+
+            button3.Click += new EventHandler(mentes);
 
             dataGridView1.Columns.Add("Esemény", "Esemény");
             dataGridView1.Columns.Add("Dátum", "Dátum");
@@ -74,8 +78,29 @@ namespace Esemény_kezelő
             button2.Click += new EventHandler(balra);
         }
 
+        void mentes(object obj, EventArgs e)
+        {
+            string nev = textBox1.Text;
+            string datum = textBox2.Text;
+            string leiras = richTextBox1.Text;
+            string keszito = textBox3.Text;
+            string kategoria = textBox4.Text;
+            string hely = textBox5.Text;
+
+            using (var conn = new MySqlConnection("server=127.0.0.1;uid=root;pwd=mysql;database=school_events"))
+            {
+                conn.Open();
+
+                using (var command = new MySqlCommand($"UPDATE events SET events.name = \'{nev}\', events.date = \'{datum}\', events.category_id = {kategoria}, events.location_id = {hely}, events.description = \'{leiras}\' WHERE events.name LIKE \'{nevek[index]}\';"))
+                {
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            index = e.RowIndex;
             if (e.RowIndex < 0) { return; }
 
             textBox1.Text = nevek[e.RowIndex];
@@ -95,11 +120,31 @@ namespace Esemény_kezelő
 
         void balra(object obj, EventArgs e)
         {
+            index--;
+            if (index == -1) index = dataGridView1.RowCount - 2;
 
+            textBox1.Text = nevek[index];
+            textBox2.Text = datumok[index];
+
+            richTextBox1.Text = leirasok[index];
+
+            textBox3.Text = keszitok[index];
+            textBox4.Text = kategoriak[index];
+            textBox5.Text = helyek[index];
         }
         void jobbra(object obj, EventArgs e)
         {
+            index++;
+            if (index == dataGridView1.RowCount) index = 0;
 
+            textBox1.Text = nevek[index];
+            textBox2.Text = datumok[index];
+
+            richTextBox1.Text = leirasok[index];
+
+            textBox3.Text = keszitok[index];
+            textBox4.Text = kategoriak[index];
+            textBox5.Text = helyek[index];
         }
     }
 }
