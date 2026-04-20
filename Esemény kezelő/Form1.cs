@@ -481,7 +481,6 @@ namespace Esemény_kezelő
 
             tarto.Controls.Clear();
             tarto.Controls.Add(atnezes);
-            atnezes.BringToFront();
             atnezes.Show();
         }
 
@@ -492,7 +491,6 @@ namespace Esemény_kezelő
 
             tarto.Controls.Clear();
             tarto.Controls.Add(hozzadas);
-            hozzadas.BringToFront();
             hozzadas.Show();
         }
     }
