@@ -38,6 +38,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // tb_nev
@@ -51,7 +52,7 @@
             // 
             this.rtb_leriras.Location = new System.Drawing.Point(307, 80);
             this.rtb_leriras.Name = "rtb_leriras";
-            this.rtb_leriras.Size = new System.Drawing.Size(380, 184);
+            this.rtb_leriras.Size = new System.Drawing.Size(380, 151);
             this.rtb_leriras.TabIndex = 1;
             this.rtb_leriras.Text = "";
             // 
@@ -131,11 +132,19 @@
             this.label4.Text = "Esemény helyszíne:";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(307, 237);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(380, 20);
+            this.dateTimePicker1.TabIndex = 10;
+            // 
             // Hozzadas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -166,5 +175,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }
