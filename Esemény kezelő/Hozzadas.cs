@@ -16,5 +16,10 @@ namespace Esemény_kezelő
         {
             InitializeComponent();
         }
+
+        private void Hozzadas_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
