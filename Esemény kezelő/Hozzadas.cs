@@ -78,7 +78,7 @@ namespace Esemény_kezelő
             string sql = $"SELECT users.id FROM users WHERE";
 
 
-            sql = $"INSERT INTO events (name, date, category_id, location_id, description, created_by, created_date) VALUES(\'{tb_nev.Text}\', \'{dateTimePicker1.Value}\', \'{cb_kategoria.SelectedIndex}\', \'{cb_helyszin.SelectedIndex}\', \'{rtb_leriras.Text}\', \'{/* created by */}\', \'{DateTime.Now}\') ";
+            sql = $"INSERT INTO events (name, date, category_id, location_id, description, created_by, created_date) VALUES(\'{tb_nev.Text}\', \'{dateTimePicker1.Value}\', \'{cb_kategoria.SelectedIndex}\', \'{cb_helyszin.SelectedIndex}\', \'{rtb_leriras.Text}\', \'{/* created by */1}\', \'{DateTime.Now}\') ";
 
             using (var conn = new MySqlConnection(connstring))
             {

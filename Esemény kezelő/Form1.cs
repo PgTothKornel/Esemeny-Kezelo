@@ -87,10 +87,15 @@ namespace Esemény_kezelő
         static TextBox tb_nev = new TextBox();
         static TextBox tb_jelszo = new TextBox();
         public static string nev = "";
+        public static string index = "";
         public static bool admin = false;
         public Form1()
         {
             InitializeComponent();
+
+            this.Text = "Esemény kezelő";
+
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
 
             bool kell = true;
 
@@ -232,19 +237,28 @@ namespace Esemény_kezelő
                         {
                             while (reader.Read())
                             {
+                                index = reader.GetValue(0).ToString();
                                 hashed = reader.GetString(2);
-
-                            if (reader.GetValue(3).ToString() == "1") admin = true;
+                            //MessageBox.Show(reader.GetValue(3).ToString());
+                            if (reader.GetValue(3).ToString() == "True") { admin = true; }
                             }
                         }
                     }
 
                 nev = tb_nev.Text;
+                if (hashed == "") {
+                    MessageBox.Show("Nem létezik ilyen fiók!");
+                    return;
+                }
 
                 if (BCrypt.Net.BCrypt.Verify(jelszo, hashed))
                     {
                         Controls.Clear();
                         AlapUi();
+                    }
+                else
+                    {
+                        MessageBox.Show("Téves jelszó!");
                     }
                 }
         }
@@ -346,11 +360,15 @@ namespace Esemény_kezelő
                 MessageBox.Show("Kérem adja meg a jelszavát!");
                 return;
             }
+
+            int counter = 0;
+
             using (var conn = new MySqlConnection("server=127.0.0.1;uid=root;pwd=mysql;database=school_events"))
             {
                 conn.Open();
 
                 nev = tb_nev.Text;
+                bool baj = false;
 
                 using (var command = new MySqlCommand($"SELECT * FROM users;", conn))
                 {
@@ -358,15 +376,22 @@ namespace Esemény_kezelő
                     {
                         while (reader.Read())
                         {
+                            counter++;
                             if (nev == reader.GetValue(1).ToString())
                             {
-                                MessageBox.Show("Kérem válasszon másik felhasználónevet, ez már foglalt!");
-                                return;
+                                baj = true;
                             }
                         }
                     }
                 }
 
+                if (baj)
+                {
+                    MessageBox.Show("Kérem válasszon másik felhasználónevet, ez már foglalt!");
+                    return;
+                }
+
+                index = (counter + 1).ToString();
                 //MessageBox.Show(BCrypt.Net.BCrypt.HashPassword(tb_jelszo.Text));
 
                 
@@ -473,6 +498,8 @@ namespace Esemény_kezelő
         void kijelentkezesGomb(object obj, EventArgs e)
         {
             Controls.Clear();
+
+            admin = false;
 
             bejelentkezesUI();
         }

@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,7 +18,7 @@ namespace Esemény_kezelő
 {
     public partial class Atnezes : Form
     {
-        public List<string> leirasok = new List<string>(), nevek = new List<string>(), keszitok = new List<string>(), datumok = new List<string>(), kategoriak = new List<string>(), helyek = new List<string>();
+        public List<string> leirasok = new List<string>(), nevek = new List<string>(), keszitok = new List<string>(), datumok = new List<string>(), kategoriak = new List<string>(), helyek = new List<string>(), jelentkezesek = new List<string>();
         int index = 0;
         public Atnezes()
         {
@@ -33,23 +34,52 @@ namespace Esemény_kezelő
                 richTextBox1.ReadOnly = true;
                 textBox1.ReadOnly = true;
                 textBox2.ReadOnly = true;
-                textBox3.ReadOnly = true;
-                textBox4.ReadOnly = true;
-                textBox5.ReadOnly = true;
+                comboBox1.Enabled = false;
+                comboBox2.Enabled = false;
                 button3.Visible = false;
+                button4.Visible = false;
             }
+            else
+            {
+                //MessageBox.Show(Form1.admin.ToString());
+                richTextBox1.ReadOnly = false;
+                textBox1.ReadOnly = false;
+                textBox2.ReadOnly = false;
+                comboBox1.Enabled = true;
+                comboBox2.Enabled = true;
+                button3.Visible = true;
+                button4.Visible = true;
+            }
+            textBox3.ReadOnly = true;
+
 
             button3.Click += new EventHandler(mentes);
+            button4.Click += new EventHandler(torol);
+            btn_jelentkezes.Click += new EventHandler(jelentkez);
 
             dataGridView1.Columns.Add("Esemény", "Esemény");
             dataGridView1.Columns.Add("Dátum", "Dátum");
             dataGridView1.Columns.Add("Leírás", "Leírás");
             dataGridView1.Columns.Add("Tervező", "Tervező");
+
             using (var conn = new MySqlConnection("server=127.0.0.1;uid=root;pwd=mysql;database=school_events"))
             {
                 conn.Open();
 
-                using (var cmd = new MySqlCommand("SELECT name, date, description, users.username, categories.category, locations.location FROM events INNER JOIN users ON created_by_id = users.id INNER JOIN categories on categories.id = category_id INNER JOIN locations on locations.id = location_id;", conn)) 
+                using (var cmd = new MySqlCommand($"SELECT * FROM participants WHERE participants.participant_id = {Form1.index};", conn))
+                {
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string szam = reader.GetValue(2).ToString();
+                            jelentkezesek.Add(szam);
+                        }
+                    }
+                }
+
+
+                using (var cmd = new MySqlCommand("SELECT name, date, description, users.username, categories.category, locations.location FROM events INNER JOIN users ON created_by_id = users.id INNER JOIN categories on categories.id = category_id INNER JOIN locations on locations.id = location_id;", conn))
                 {
                     using (var reader = cmd.ExecuteReader())
                     {
@@ -72,10 +102,30 @@ namespace Esemény_kezelő
                     }
                 }
 
+                kategoriak.Clear();
+                helyek.Clear();
+
+                using (var cmd = new MySqlCommand("SELECT categories.category, locations.location FROM categories, locations;", conn))
+                {
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read()) {
+                            string kategoria = (string)reader.GetValue(0);
+                            string hely = (string)reader.GetValue(1);
+                            if (!kategoriak.Contains(kategoria)) { kategoriak.Add(kategoria); }
+                            if (!helyek.Contains(hely)) { helyek.Add(hely); }
+                        }
+                    }
+                }
             }
 
+            kategoriak.Reverse();
+
             button1.Click += new EventHandler(balra);
-            button2.Click += new EventHandler(balra);
+            button2.Click += new EventHandler(jobbra);
+
+            comboBox1.Items.AddRange(kategoriak.ToArray());
+            comboBox2.Items.AddRange(helyek.ToArray());
         }
 
         void mentes(object obj, EventArgs e)
@@ -83,17 +133,91 @@ namespace Esemény_kezelő
             string nev = textBox1.Text;
             string datum = textBox2.Text;
             string leiras = richTextBox1.Text;
-            string keszito = textBox3.Text;
-            string kategoria = textBox4.Text;
-            string hely = textBox5.Text;
+            string kategoria = (comboBox1.SelectedIndex + 1).ToString();
+            string hely = (comboBox2.SelectedIndex + 1).ToString();
+    
+
+            datum = datum.Replace(". ", "-");
+
+            if (DateTime.TryParse(datum, out DateTime result) == false) { MessageBox.Show("Kérem helyes dátumot adjon meg!"); return; };
 
             using (var conn = new MySqlConnection("server=127.0.0.1;uid=root;pwd=mysql;database=school_events"))
             {
                 conn.Open();
 
-                using (var command = new MySqlCommand($"UPDATE events SET events.name = \'{nev}\', events.date = \'{datum}\', events.category_id = {kategoria}, events.location_id = {hely}, events.description = \'{leiras}\' WHERE events.name LIKE \'{nevek[index]}\';"))
+                using (var command = new MySqlCommand($"UPDATE events SET events.name = \'{nev}\', events.date = \'{datum}\', events.category_id = {kategoria}, events.location_id = {hely}, events.description = \'{leiras}\' WHERE events.name LIKE \'{nevek[index]}\';", conn))
                 {
                     command.ExecuteNonQuery();
+                    nevek[index] = nev;
+                    datumok[index] = datum;
+                    leirasok[index] = leiras;
+                    kategoriak[index] = kategoria;
+                    helyek[index] = hely;
+                    nevek[index] = nev;
+                }
+            }
+        }
+
+        void torol(object obj, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Biztos ki akarod ezt az eseményt törölni?", "Törlés", MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+
+            using (var conn = new MySqlConnection("server=127.0.0.1;uid=root;pwd=mysql;database=school_events"))
+            {
+                conn.Open();
+
+                using (var cmd = new MySqlCommand($"DELETE FROM participants WHERE participants.event_id = {index + 1};", conn))
+                {
+                    cmd.ExecuteNonQuery();
+                }
+
+                using (var cmd = new MySqlCommand($"DELETE FROM events WHERE id = {index + 1};", conn))
+                {
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        void jelentkez(object obj, EventArgs e)
+        {
+            string szam = "0";
+
+            using (var conn = new MySqlConnection("server=127.0.0.1;uid=root;pwd=mysql;database=school_events"))
+            {
+                conn.Open();
+
+                using (var cmd = new MySqlCommand($"SELECT * FROM events WHERE events.name LIKE '{nevek[index]}';", conn))
+                {
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            szam = reader.GetValue(0).ToString();
+                        }
+                    }
+                }
+
+
+                if (btn_jelentkezes.Text == "Jelentkezés") {
+
+                    using (var cmd = new MySqlCommand($"INSERT INTO participants VALUES(0, \'{Form1.index}\', \'{szam}\');", conn))
+                    {
+                        cmd.ExecuteNonQuery();
+                        btn_jelentkezes.Text = "Lemondás";
+                    }
+                }
+                else
+                {
+                    using (var cmd = new MySqlCommand($"DELETE FROM participants WHERE participants.event_id = {szam} AND participants.participant_id = {Form1.index};", conn))
+                    {
+                        cmd.ExecuteNonQuery();
+                        btn_jelentkezes.Text = "Jelentkezés";
+                    }
                 }
             }
         }
@@ -101,7 +225,28 @@ namespace Esemény_kezelő
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             index = e.RowIndex;
-            if (e.RowIndex < 0) { return; }
+            if (e.RowIndex < 0 || e.RowIndex >= dataGridView1.RowCount - 1) { return; }
+
+            btn_jelentkezes.Text = "Jelentkezés";
+
+            using (var conn = new MySqlConnection("server=127.0.0.1;uid=root;pwd=mysql;database=school_events"))
+            {
+                conn.Open();
+
+                using (var cmd = new MySqlCommand($"SELECT participants.participant_id, participants.event_id, events.name FROM participants INNER JOIN events ON events.id = participants.event_id WHERE participants.participant_id = {Form1.index};", conn))
+                {
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read()) { 
+                        if (reader.GetValue(2).ToString() == nevek[index])
+                        {
+                            btn_jelentkezes.Text = "Lemondás";
+                        }
+                        }
+                    }
+                }
+            }
+
 
             textBox1.Text = nevek[e.RowIndex];
             textBox2.Text = datumok[e.RowIndex];
@@ -109,9 +254,8 @@ namespace Esemény_kezelő
             richTextBox1.Text = leirasok[e.RowIndex];
 
             textBox3.Text = keszitok[e.RowIndex];
-            textBox4.Text = kategoriak[e.RowIndex];
-            textBox5.Text = helyek[e.RowIndex];
-
+            comboBox1.SelectedIndex = e.RowIndex;
+            comboBox2.SelectedIndex = e.RowIndex;
             //MessageBox.Show(dataGridView1.selected)
 
             panel1.Visible = false;
@@ -121,7 +265,28 @@ namespace Esemény_kezelő
         void balra(object obj, EventArgs e)
         {
             index--;
-            if (index == -1) index = dataGridView1.RowCount - 2;
+            if (index == -1) { index = dataGridView1.RowCount - 2; }
+
+            btn_jelentkezes.Text = "Jelentkezés";
+
+            using (var conn = new MySqlConnection("server=127.0.0.1;uid=root;pwd=mysql;database=school_events"))
+            {
+                conn.Open();
+
+                using (var cmd = new MySqlCommand($"SELECT participants.participant_id, participants.event_id, events.name FROM participants INNER JOIN events ON events.id = participants.event_id WHERE participants.participant_id = {Form1.index};", conn))
+                {
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            if (reader.GetValue(2).ToString() == nevek[index])
+                            {
+                                btn_jelentkezes.Text = "Lemondás";
+                            }
+                        }
+                    }
+                }
+            }
 
             textBox1.Text = nevek[index];
             textBox2.Text = datumok[index];
@@ -129,13 +294,34 @@ namespace Esemény_kezelő
             richTextBox1.Text = leirasok[index];
 
             textBox3.Text = keszitok[index];
-            textBox4.Text = kategoriak[index];
-            textBox5.Text = helyek[index];
+            comboBox1.SelectedIndex = index;
+            comboBox2.SelectedIndex = index;
         }
         void jobbra(object obj, EventArgs e)
         {
             index++;
-            if (index == dataGridView1.RowCount) index = 0;
+            if (index == dataGridView1.RowCount - 1) { index = 0; }
+
+            btn_jelentkezes.Text = "Jelentkezés";
+
+            using (var conn = new MySqlConnection("server=127.0.0.1;uid=root;pwd=mysql;database=school_events"))
+            {
+                conn.Open();
+
+                using (var cmd = new MySqlCommand($"SELECT participants.participant_id, participants.event_id, events.name FROM participants INNER JOIN events ON events.id = participants.event_id WHERE participants.participant_id = {Form1.index};", conn))
+                {
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            if (reader.GetValue(2).ToString() == nevek[index])
+                            {
+                                btn_jelentkezes.Text = "Lemondás";
+                            }
+                        }
+                    }
+                }
+            }
 
             textBox1.Text = nevek[index];
             textBox2.Text = datumok[index];
@@ -143,8 +329,8 @@ namespace Esemény_kezelő
             richTextBox1.Text = leirasok[index];
 
             textBox3.Text = keszitok[index];
-            textBox4.Text = kategoriak[index];
-            textBox5.Text = helyek[index];
+            comboBox1.SelectedIndex = index;
+            comboBox2.SelectedIndex = index;
         }
     }
 }

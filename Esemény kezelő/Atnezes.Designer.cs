@@ -38,10 +38,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.btn_jelentkezes = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -49,51 +51,59 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Location = new System.Drawing.Point(169, 43);
+            this.panel1.Location = new System.Drawing.Point(254, 66);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(509, 360);
+            this.panel1.Size = new System.Drawing.Size(764, 598);
             this.panel1.TabIndex = 0;
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(9, 8);
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(492, 341);
+            this.dataGridView1.RowHeadersWidth = 62;
+            this.dataGridView1.Size = new System.Drawing.Size(764, 598);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(265, 81);
+            this.richTextBox1.Location = new System.Drawing.Point(398, 125);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(306, 189);
+            this.richTextBox1.Size = new System.Drawing.Size(457, 289);
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(265, 55);
+            this.textBox1.Location = new System.Drawing.Point(398, 85);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(155, 20);
+            this.textBox1.Size = new System.Drawing.Size(230, 26);
             this.textBox1.TabIndex = 2;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(426, 55);
+            this.textBox2.Location = new System.Drawing.Point(639, 85);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(145, 20);
+            this.textBox2.Size = new System.Drawing.Size(216, 26);
             this.textBox2.TabIndex = 3;
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button1.Location = new System.Drawing.Point(265, 369);
+            this.button1.Location = new System.Drawing.Point(398, 568);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(42, 33);
+            this.button1.Size = new System.Drawing.Size(63, 51);
             this.button1.TabIndex = 4;
             this.button1.Text = "<--";
             this.button1.UseVisualStyleBackColor = true;
@@ -101,9 +111,10 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button2.Location = new System.Drawing.Point(529, 369);
+            this.button2.Location = new System.Drawing.Point(794, 568);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(42, 33);
+            this.button2.Size = new System.Drawing.Size(63, 51);
             this.button2.TabIndex = 5;
             this.button2.Text = "-->";
             this.button2.UseVisualStyleBackColor = true;
@@ -111,81 +122,110 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(265, 280);
+            this.label1.Location = new System.Drawing.Point(398, 431);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 13);
+            this.label1.Size = new System.Drawing.Size(65, 20);
             this.label1.TabIndex = 6;
             this.label1.Text = "Készítő:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(265, 308);
+            this.label2.Location = new System.Drawing.Point(394, 474);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 13);
+            this.label2.Size = new System.Drawing.Size(81, 20);
             this.label2.TabIndex = 7;
             this.label2.Text = "Kategória:";
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(443, 276);
+            this.textBox3.Location = new System.Drawing.Point(664, 425);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(128, 20);
+            this.textBox3.Size = new System.Drawing.Size(190, 26);
             this.textBox3.TabIndex = 9;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(443, 304);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(128, 20);
-            this.textBox4.TabIndex = 10;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(443, 332);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(128, 20);
-            this.textBox5.TabIndex = 12;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(265, 336);
+            this.label3.Location = new System.Drawing.Point(398, 517);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 13);
+            this.label3.Size = new System.Drawing.Size(72, 20);
             this.label3.TabIndex = 11;
             this.label3.Text = "Helyszín:";
             // 
             // button3
             // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.button3.Location = new System.Drawing.Point(314, 369);
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.button3.Location = new System.Drawing.Point(639, 624);
+            this.button3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(209, 33);
+            this.button3.Size = new System.Drawing.Size(148, 40);
             this.button3.TabIndex = 13;
             this.button3.Text = "Mentés";
             this.button3.UseVisualStyleBackColor = true;
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(664, 468);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(191, 28);
+            this.comboBox1.TabIndex = 14;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(663, 513);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(191, 28);
+            this.comboBox2.TabIndex = 15;
+            // 
+            // button4
+            // 
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.button4.Location = new System.Drawing.Point(468, 624);
+            this.button4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(160, 40);
+            this.button4.TabIndex = 16;
+            this.button4.Text = "Töröl";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // btn_jelentkezes
+            // 
+            this.btn_jelentkezes.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.btn_jelentkezes.Location = new System.Drawing.Point(468, 568);
+            this.btn_jelentkezes.Name = "btn_jelentkezes";
+            this.btn_jelentkezes.Size = new System.Drawing.Size(319, 51);
+            this.btn_jelentkezes.TabIndex = 17;
+            this.btn_jelentkezes.Text = "Jelentkezés";
+            this.btn_jelentkezes.UseVisualStyleBackColor = true;
+            // 
             // Atnezes
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1200, 692);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.textBox5);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button3);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.btn_jelentkezes);
+            this.Controls.Add(this.button4);
             this.Name = "Atnezes";
             this.Text = "Atnezes";
             this.Load += new System.EventHandler(this.Atnezes_Load);
@@ -208,9 +248,11 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btn_jelentkezes;
     }
 }
