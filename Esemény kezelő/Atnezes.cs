@@ -137,7 +137,7 @@ namespace Esemény_kezelő
             string hely = (comboBox2.SelectedIndex + 1).ToString();
     
 
-            datum = datum.Replace(". ", "-");
+            datum = DateTime.Parse(datum).ToString("yyyy-MM-dd HH:mm:ss");
 
             if (DateTime.TryParse(datum, out DateTime result) == false) { MessageBox.Show("Kérem helyes dátumot adjon meg!"); return; };
 

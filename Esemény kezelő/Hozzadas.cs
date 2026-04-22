@@ -25,11 +25,15 @@ namespace Esemény_kezelő
             string sql = "SELECT categories.category FROM categories;";
 
             dateTimePicker1.MinDate = DateTime.Now;
+            dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            dateTimePicker1.CustomFormat = "yyyy-MM-dd HH:mm:ss";
 
             cb_kategoria.Items.Clear();
             cb_kategoria.Items.Add("");
+            cb_kategoria.SelectedIndex = 0;
             cb_helyszin.Items.Clear();
             cb_helyszin.Items.Add("");
+            cb_helyszin.SelectedIndex = 0;
             using (var conn = new MySqlConnection(connstring))
             {
                 conn.Open();   
@@ -78,7 +82,7 @@ namespace Esemény_kezelő
             string sql = $"SELECT users.id FROM users WHERE";
 
 
-            sql = $"INSERT INTO events (name, date, category_id, location_id, description, created_by, created_date) VALUES(\'{tb_nev.Text}\', \'{dateTimePicker1.Value}\', \'{cb_kategoria.SelectedIndex}\', \'{cb_helyszin.SelectedIndex}\', \'{rtb_leriras.Text}\', \'{/* created by */1}\', \'{DateTime.Now}\') ";
+            sql = $"INSERT INTO events (name, date, category_id, location_id, description, created_by_id, created_date) VALUES(\'{tb_nev.Text}\', \'{dateTimePicker1.Value.ToString("yyyy-MM-dd HH:mm:ss")}\', \'{cb_kategoria.SelectedIndex}\', \'{cb_helyszin.SelectedIndex}\', \'{rtb_leriras.Text}\', \'{Form1.index}\', \'{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}\') ";
 
             using (var conn = new MySqlConnection(connstring))
             {
@@ -89,6 +93,38 @@ namespace Esemény_kezelő
                 }
             }
 
+        }
+
+        private void tb_nev_TextChanged(object sender, EventArgs e)
+        {
+            if (tb_nev.Text == "" || rtb_leriras.Text == "" || cb_kategoria.SelectedIndex == 0 || cb_helyszin.SelectedIndex == 0)
+                btn_hozzaad.Enabled = false;
+            else
+                btn_hozzaad.Enabled = true;
+        }
+
+        private void rtb_leriras_TextChanged(object sender, EventArgs e)
+        {
+            if (tb_nev.Text == "" || rtb_leriras.Text == "" || cb_kategoria.SelectedIndex == 0 || cb_helyszin.SelectedIndex == 0)
+                btn_hozzaad.Enabled = false;
+            else
+                btn_hozzaad.Enabled = true;
+        }
+
+        private void cb_kategoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tb_nev.Text == "" || rtb_leriras.Text == "" || cb_kategoria.SelectedIndex == 0 || cb_helyszin.SelectedIndex == 0)
+                btn_hozzaad.Enabled = false;
+            else
+                btn_hozzaad.Enabled = true;
+        }
+
+        private void cb_helyszin_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tb_nev.Text == "" || rtb_leriras.Text == "" || cb_kategoria.SelectedIndex == 0 || cb_helyszin.SelectedIndex == 0)
+                btn_hozzaad.Enabled = false;
+            else
+                btn_hozzaad.Enabled = true;
         }
     }
 }

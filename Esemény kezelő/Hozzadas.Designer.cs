@@ -47,6 +47,7 @@
             this.tb_nev.Name = "tb_nev";
             this.tb_nev.Size = new System.Drawing.Size(380, 20);
             this.tb_nev.TabIndex = 0;
+            this.tb_nev.TextChanged += new System.EventHandler(this.tb_nev_TextChanged);
             // 
             // rtb_leriras
             // 
@@ -55,22 +56,27 @@
             this.rtb_leriras.Size = new System.Drawing.Size(380, 151);
             this.rtb_leriras.TabIndex = 1;
             this.rtb_leriras.Text = "";
+            this.rtb_leriras.TextChanged += new System.EventHandler(this.rtb_leriras_TextChanged);
             // 
             // cb_kategoria
             // 
+            this.cb_kategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_kategoria.FormattingEnabled = true;
             this.cb_kategoria.Location = new System.Drawing.Point(307, 272);
             this.cb_kategoria.Name = "cb_kategoria";
             this.cb_kategoria.Size = new System.Drawing.Size(380, 21);
             this.cb_kategoria.TabIndex = 2;
+            this.cb_kategoria.SelectedIndexChanged += new System.EventHandler(this.cb_kategoria_SelectedIndexChanged);
             // 
             // cb_helyszin
             // 
+            this.cb_helyszin.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_helyszin.FormattingEnabled = true;
             this.cb_helyszin.Location = new System.Drawing.Point(307, 307);
             this.cb_helyszin.Name = "cb_helyszin";
             this.cb_helyszin.Size = new System.Drawing.Size(380, 21);
             this.cb_helyszin.TabIndex = 3;
+            this.cb_helyszin.SelectedIndexChanged += new System.EventHandler(this.cb_helyszin_SelectedIndexChanged);
             // 
             // btn_torol
             // 
@@ -84,6 +90,7 @@
             // 
             // btn_hozzaad
             // 
+            this.btn_hozzaad.Enabled = false;
             this.btn_hozzaad.Location = new System.Drawing.Point(307, 346);
             this.btn_hozzaad.Name = "btn_hozzaad";
             this.btn_hozzaad.Size = new System.Drawing.Size(380, 52);
