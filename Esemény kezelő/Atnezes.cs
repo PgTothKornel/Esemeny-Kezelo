@@ -18,7 +18,7 @@ namespace Esemény_kezelő
 {
     public partial class Atnezes : Form
     {
-        public List<string> leirasok = new List<string>(), nevek = new List<string>(), keszitok = new List<string>(), datumok = new List<string>(), kategoriak = new List<string>(), helyek = new List<string>(), jelentkezesek = new List<string>();
+        public List<string> leirasok = new List<string>(), nevek = new List<string>(), keszitok = new List<string>(), datumok = new List<string>(), kategoriak = new List<string>(), helyek = new List<string>(), jelentkezesek = new List<string>(), kategoriakOssz = new List<string>(), helyekOssz = new List<string>();
         int index = 0;
         public Atnezes()
         {
@@ -51,7 +51,7 @@ namespace Esemény_kezelő
                 button4.Visible = true;
             }
             textBox3.ReadOnly = true;
-
+            label4.Visible = false;
 
             button3.Click += new EventHandler(mentes);
             button4.Click += new EventHandler(torol);
@@ -102,9 +102,6 @@ namespace Esemény_kezelő
                     }
                 }
 
-                kategoriak.Clear();
-                helyek.Clear();
-
                 using (var cmd = new MySqlCommand("SELECT categories.category, locations.location FROM categories, locations;", conn))
                 {
                     using (var reader = cmd.ExecuteReader())
@@ -112,20 +109,20 @@ namespace Esemény_kezelő
                         while (reader.Read()) {
                             string kategoria = (string)reader.GetValue(0);
                             string hely = (string)reader.GetValue(1);
-                            if (!kategoriak.Contains(kategoria)) { kategoriak.Add(kategoria); }
-                            if (!helyek.Contains(hely)) { helyek.Add(hely); }
+                            if (!kategoriakOssz.Contains(kategoria)) { kategoriakOssz.Add(kategoria); }
+                            if (!helyekOssz.Contains(hely)) { helyekOssz.Add(hely); }
                         }
                     }
                 }
             }
 
-            kategoriak.Reverse();
+            kategoriakOssz.Reverse();
 
             button1.Click += new EventHandler(balra);
             button2.Click += new EventHandler(jobbra);
 
-            comboBox1.Items.AddRange(kategoriak.ToArray());
-            comboBox2.Items.AddRange(helyek.ToArray());
+            comboBox1.Items.AddRange(kategoriakOssz.ToArray());
+            comboBox2.Items.AddRange(helyekOssz.ToArray());
         }
 
         void mentes(object obj, EventArgs e)
@@ -135,11 +132,21 @@ namespace Esemény_kezelő
             string leiras = richTextBox1.Text;
             string kategoria = (comboBox1.SelectedIndex + 1).ToString();
             string hely = (comboBox2.SelectedIndex + 1).ToString();
-    
 
-            datum = DateTime.Parse(datum).ToString("yyyy-MM-dd HH:mm:ss");
+            if (nev.StartsWith(" ") || nev.StartsWith("\t") || int.TryParse(nev, out int result1) == true)
+            {
+                MessageBox.Show("Kérem egy rendes nevet adjon meg!");
+                return;
+            }
+            else if (leiras.StartsWith(" ") || int.TryParse(nev, out int result2) == true)
+            {
+                MessageBox.Show("Kérem egy rendes leírást adjon meg!");
+                return;
+            }
 
             if (DateTime.TryParse(datum, out DateTime result) == false) { MessageBox.Show("Kérem helyes dátumot adjon meg!"); return; };
+
+            datum = DateTime.Parse(datum).ToString("yyyy-MM-dd HH:mm:ss");
 
             using (var conn = new MySqlConnection("server=127.0.0.1;uid=root;pwd=mysql;database=school_events"))
             {
@@ -229,6 +236,7 @@ namespace Esemény_kezelő
 
             btn_jelentkezes.Text = "Jelentkezés";
 
+
             using (var conn = new MySqlConnection("server=127.0.0.1;uid=root;pwd=mysql;database=school_events"))
             {
                 conn.Open();
@@ -237,11 +245,11 @@ namespace Esemény_kezelő
                 {
                     using (var reader = cmd.ExecuteReader())
                     {
-                        while (reader.Read()) { 
-                        if (reader.GetValue(2).ToString() == nevek[index])
-                        {
-                            btn_jelentkezes.Text = "Lemondás";
-                        }
+                        while (reader.Read()) {
+                            if (reader.GetValue(2).ToString() == nevek[index])
+                            {
+                                btn_jelentkezes.Text = "Lemondás";
+                            }
                         }
                     }
                 }
@@ -254,9 +262,46 @@ namespace Esemény_kezelő
             richTextBox1.Text = leirasok[e.RowIndex];
 
             textBox3.Text = keszitok[e.RowIndex];
-            comboBox1.SelectedIndex = e.RowIndex;
-            comboBox2.SelectedIndex = e.RowIndex;
+
+            for (int j = 0; j < kategoriak.Count; j++)
+            {
+                if (kategoriakOssz[j] == kategoriak[index])
+                {
+                    comboBox1.SelectedIndex = j; break;
+                }
+            }
+            for (int j = 0; j < helyek.Count; j++)
+            {
+                if (helyekOssz[j] == helyek[index])
+                {
+                    comboBox2.SelectedIndex = j; break;
+                }
+            }
+
             //MessageBox.Show(dataGridView1.selected)
+
+            if (!Form1.admin && Form1.nev != textBox3.Text)
+            {
+                richTextBox1.ReadOnly = true;
+                textBox1.ReadOnly = true;
+                textBox2.ReadOnly = true;
+                comboBox1.Enabled = false;
+                comboBox2.Enabled = false;
+                button3.Visible = false;
+                button4.Visible = false;
+                label4.Visible = false;
+            }
+            else 
+            {
+                richTextBox1.ReadOnly = false;
+                textBox1.ReadOnly = false;
+                textBox2.ReadOnly = false;
+                comboBox1.Enabled = true;
+                comboBox2.Enabled = true;
+                button3.Visible = true;
+                label4.Visible = true;
+                button4.Visible = true;
+            }
 
             panel1.Visible = false;
             dataGridView1.Visible = false;
@@ -264,6 +309,8 @@ namespace Esemény_kezelő
 
         void balra(object obj, EventArgs e)
         {
+            
+
             index--;
             if (index == -1) { index = dataGridView1.RowCount - 2; }
 
@@ -294,11 +341,49 @@ namespace Esemény_kezelő
             richTextBox1.Text = leirasok[index];
 
             textBox3.Text = keszitok[index];
-            comboBox1.SelectedIndex = index;
-            comboBox2.SelectedIndex = index;
+
+            for (int j = 0; j < kategoriak.Count; j++)
+            {
+                if (kategoriakOssz[j] == kategoriak[index])
+                {
+                    comboBox1.SelectedIndex = j; break;
+                }
+            }
+            for (int j = 0; j < helyek.Count; j++)
+            {
+                if (helyekOssz[j] == helyek[index])
+                {
+                    comboBox2.SelectedIndex = j; break;
+                }
+            }
+
+            if (!Form1.admin && Form1.nev != textBox3.Text)
+            {
+                richTextBox1.ReadOnly = true;
+                textBox1.ReadOnly = true;
+                textBox2.ReadOnly = true;
+                comboBox1.Enabled = false;
+                comboBox2.Enabled = false;
+                button3.Visible = false;
+                button4.Visible = false;
+                label4.Visible = false;
+            }
+            else
+            {
+                richTextBox1.ReadOnly = false;
+                textBox1.ReadOnly = false;
+                textBox2.ReadOnly = false;
+                comboBox1.Enabled = true;
+                comboBox2.Enabled = true;
+                button3.Visible = true;
+                button4.Visible = true;
+                label4.Visible = true;
+            }
         }
         void jobbra(object obj, EventArgs e)
         {
+            
+
             index++;
             if (index == dataGridView1.RowCount - 1) { index = 0; }
 
@@ -329,8 +414,44 @@ namespace Esemény_kezelő
             richTextBox1.Text = leirasok[index];
 
             textBox3.Text = keszitok[index];
-            comboBox1.SelectedIndex = index;
-            comboBox2.SelectedIndex = index;
+
+            for (int j = 0; j < kategoriak.Count; j++)
+            {
+                if (kategoriakOssz[j] == kategoriak[index])
+                {
+                    comboBox1.SelectedIndex = j; break;
+                }
+            }
+            for (int j = 0; j < helyek.Count; j++)
+            {
+                if (helyekOssz[j] == helyek[index])
+                {
+                    comboBox2.SelectedIndex = j; break;
+                }
+            }
+
+            if (!Form1.admin && Form1.nev != textBox3.Text)
+            {
+                richTextBox1.ReadOnly = true;
+                textBox1.ReadOnly = true;
+                textBox2.ReadOnly = true;
+                comboBox1.Enabled = false;
+                comboBox2.Enabled = false;
+                button3.Visible = false;
+                button4.Visible = false;
+                label4.Visible = false;
+            }
+            else
+            {
+                richTextBox1.ReadOnly = false;
+                textBox1.ReadOnly = false;
+                textBox2.ReadOnly = false;
+                comboBox1.Enabled = true;
+                comboBox2.Enabled = true;
+                button3.Visible = true;
+                button4.Visible = true;
+                label4.Visible = true;
+            }
         }
     }
 }

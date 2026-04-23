@@ -101,8 +101,10 @@ namespace Esemény_kezelő
 
             using (var conn = new MySqlConnection("server=127.0.0.1;uid=root;pwd=mysql;"))
             {
+                try { 
                 conn.Open();
-
+                }
+                catch { MessageBox.Show("Nem fut az adatbázis!"); Environment.Exit(0); }
                 using (var check = new MySqlCommand("SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA;", conn))
 
                 using (var reader = check.ExecuteReader())
@@ -350,9 +352,20 @@ namespace Esemény_kezelő
         {
             // regisztrálás
 
+            if (tb_nev.Text.StartsWith(" ") || tb_nev.Text.StartsWith("\t") || int.TryParse(tb_nev.Text, out int result1) == true || tb_nev.Text.Length < 3)
+            {
+                MessageBox.Show("Kérem egy rendes nevet adjon meg! (nem kezdődhet tabbal, szóközzel, legalább 4 karakter, és nem lehet szám!)");
+                return;
+            }
+            else if (tb_jelszo.Text.StartsWith(" ") || tb_jelszo.Text.StartsWith("\t") || tb_jelszo.Text.Length < 6)
+            {
+                MessageBox.Show("Kérem egy rendes jelszót adjon meg! (nem kezdődhet tabbal, szóközzel, legalább 6 karakter kell legyen!)");
+                return;
+            }
+
             if (tb_nev.Text == string.Empty)
             {
-                MessageBox.Show("Kérem adjon meg egy nevet!" + " " + tb_nev.Text);
+                MessageBox.Show("Kérem adjon meg egy nevet!");
                 return;
             }
             else if (tb_jelszo.Text == string.Empty)

@@ -44,6 +44,7 @@
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.button4 = new System.Windows.Forms.Button();
             this.btn_jelentkezes = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -205,12 +206,22 @@
             this.btn_jelentkezes.Text = "Jelentkezés";
             this.btn_jelentkezes.UseVisualStyleBackColor = true;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(635, 60);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(224, 20);
+            this.label4.TabIndex = 18;
+            this.label4.Text = "(Minta: 2026. 12. 18. 16:00:00)";
+            // 
             // Atnezes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1200, 692);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -254,5 +265,6 @@
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button btn_jelentkezes;
+        private System.Windows.Forms.Label label4;
     }
 }
