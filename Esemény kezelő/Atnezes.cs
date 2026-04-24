@@ -176,16 +176,31 @@ namespace Esemény_kezelő
                 return;
             }
 
+            string helyesIndex = "1";
+
             using (var conn = new MySqlConnection("server=127.0.0.1;uid=root;pwd=mysql;database=school_events"))
             {
                 conn.Open();
 
-                using (var cmd = new MySqlCommand($"DELETE FROM participants WHERE participants.event_id = {index + 1};", conn))
+                using (var cmd = new MySqlCommand($"SELECT * FROM events WHERE events.name LIKE '{nevek[index]}' AND events.description LIKE '{leirasok[index]}' AND events.date LIKE '{datumok[index]}';", conn))
+                {
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            helyesIndex = reader.GetValue(0).ToString();
+                        }
+                    }
+                }
+
+                MessageBox.Show(helyesIndex);
+
+                using (var cmd = new MySqlCommand($"DELETE FROM participants WHERE participants.event_id = {helyesIndex};", conn))
                 {
                     cmd.ExecuteNonQuery();
                 }
 
-                using (var cmd = new MySqlCommand($"DELETE FROM events WHERE id = {index + 1};", conn))
+                using (var cmd = new MySqlCommand($"DELETE FROM events WHERE id = {helyesIndex};", conn))
                 {
                     cmd.ExecuteNonQuery();
                 }

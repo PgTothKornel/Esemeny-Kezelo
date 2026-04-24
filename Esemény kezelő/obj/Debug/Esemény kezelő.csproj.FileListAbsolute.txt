@@ -186,3 +186,39 @@ C:\Users\TEMP.PG.005\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\obj\Debug\
 C:\Users\TEMP.PG.005\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\obj\Debug\Esem_ny .D96813CA.Up2Date
 C:\Users\TEMP.PG.005\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\obj\Debug\Esemény kezelő.exe
 C:\Users\TEMP.PG.005\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\obj\Debug\Esemény kezelő.pdb
+C:\Users\TothKornel\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\bin\Debug\Esemény kezelő.exe.config
+C:\Users\TothKornel\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\bin\Debug\Esemény kezelő.exe
+C:\Users\TothKornel\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\bin\Debug\Esemény kezelő.pdb
+C:\Users\TothKornel\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\bin\Debug\BCrypt.Net-Next.dll
+C:\Users\TothKornel\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\TothKornel\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\TothKornel\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\TothKornel\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\bin\Debug\MySqlConnector.dll
+C:\Users\TothKornel\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\bin\Debug\System.Buffers.dll
+C:\Users\TothKornel\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\Users\TothKornel\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\bin\Debug\System.Memory.dll
+C:\Users\TothKornel\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\TothKornel\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\TothKornel\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\TothKornel\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\bin\Debug\BCrypt.Net-Next.xml
+C:\Users\TothKornel\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\TothKornel\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Users\TothKornel\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\TothKornel\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\bin\Debug\MySqlConnector.xml
+C:\Users\TothKornel\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\bin\Debug\System.Buffers.xml
+C:\Users\TothKornel\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\Users\TothKornel\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\bin\Debug\System.Memory.xml
+C:\Users\TothKornel\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\TothKornel\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\TothKornel\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\TothKornel\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\obj\Debug\Esemény kezelő.csproj.AssemblyReference.cache
+C:\Users\TothKornel\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\obj\Debug\Esemény kezelő.exe.config
+C:\Users\TothKornel\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\obj\Debug\Esemény_kezelő.Atnezes.resources
+C:\Users\TothKornel\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\obj\Debug\Esemény_kezelő.gradientLayoutPanel.resources
+C:\Users\TothKornel\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\obj\Debug\Esemény_kezelő.Hozzadas.resources
+C:\Users\TothKornel\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\obj\Debug\Esemény_kezelő.Properties.Resources.resources
+C:\Users\TothKornel\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\obj\Debug\Esemény kezelő.csproj.GenerateResource.cache
+C:\Users\TothKornel\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\obj\Debug\Esemény kezelő.csproj.CoreCompileInputs.cache
+C:\Users\TothKornel\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\obj\Debug\Esem_ny .D96813CA.Up2Date
+C:\Users\TothKornel\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\obj\Debug\Esemény kezelő.exe
+C:\Users\TothKornel\Documents\GitHub\Esemeny-Kezelo\Esemény kezelő\obj\Debug\Esemény kezelő.pdb
