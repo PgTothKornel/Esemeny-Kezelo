@@ -25,6 +25,8 @@ namespace Esemény_kezelő
             InitializeComponent();
 
             this.WindowState = FormWindowState.Maximized;
+
+            this.dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void Atnezes_Load(object sender, EventArgs e)

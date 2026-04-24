@@ -95,6 +95,8 @@ namespace Esemény_kezelő
 
             this.Text = "Esemény kezelő";
 
+            this.Icon = Icon.ExtractAssociatedIcon("logo.ico");
+
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
 
             bool kell = true;
