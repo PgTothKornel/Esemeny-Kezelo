@@ -75,14 +75,32 @@ Regisztráció Teszt
 
     Click    name:"Regisztráció"
     Click    name:"Jelszó:" and type:Edit
-    Send Keys    keys=RegTest
+    Send Keys    keys=RegTest2
 
     Send Keys    keys={Tab}   
-    Send Keys    keys=RegTest
+    Send Keys    keys=RegTest2
 
     Click    name:"Regisztráció"
     Click    name:"Bezárás"
     
+Kijelentkezés Admin fiókból
+    Launch App    
+    Click    name:"Jelszó:"
+    Send Keys    keys=admin
+
+    Send Keys    keys={Tab}   
+    Send Keys    keys=admin
+
+    Click    name:"Bejelentkezés"
+
+    Sleep    1s
+
+    Click    name:"admin"
+    Click    name:"Kijelentkezés"
+    Sleep    1s
+    Click    name:"Bezárás"
+
+
 
 *** Keywords ***
 
