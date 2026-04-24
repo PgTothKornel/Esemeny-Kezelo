@@ -263,14 +263,14 @@ namespace Esemény_kezelő
 
             textBox3.Text = keszitok[e.RowIndex];
 
-            for (int j = 0; j < kategoriak.Count; j++)
+            for (int j = 0; j < kategoriakOssz.Count; j++)
             {
                 if (kategoriakOssz[j] == kategoriak[index])
                 {
                     comboBox1.SelectedIndex = j; break;
                 }
             }
-            for (int j = 0; j < helyek.Count; j++)
+            for (int j = 0; j < helyekOssz.Count; j++)
             {
                 if (helyekOssz[j] == helyek[index])
                 {
@@ -342,14 +342,14 @@ namespace Esemény_kezelő
 
             textBox3.Text = keszitok[index];
 
-            for (int j = 0; j < kategoriak.Count; j++)
+            for (int j = 0; j < kategoriakOssz.Count; j++)
             {
                 if (kategoriakOssz[j] == kategoriak[index])
                 {
                     comboBox1.SelectedIndex = j; break;
                 }
             }
-            for (int j = 0; j < helyek.Count; j++)
+            for (int j = 0; j < helyekOssz.Count; j++)
             {
                 if (helyekOssz[j] == helyek[index])
                 {
@@ -415,14 +415,14 @@ namespace Esemény_kezelő
 
             textBox3.Text = keszitok[index];
 
-            for (int j = 0; j < kategoriak.Count; j++)
+            for (int j = 0; j < kategoriakOssz.Count; j++)
             {
                 if (kategoriakOssz[j] == kategoriak[index])
                 {
                     comboBox1.SelectedIndex = j; break;
                 }
             }
-            for (int j = 0; j < helyek.Count; j++)
+            for (int j = 0; j < helyekOssz.Count; j++)
             {
                 if (helyekOssz[j] == helyek[index])
                 {
