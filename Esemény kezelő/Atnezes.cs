@@ -154,7 +154,7 @@ namespace Esemény_kezelő
             {
                 conn.Open();
 
-                using (var command = new MySqlCommand($"UPDATE events SET events.name = \'{nev}\', events.date = \'{datum}\', events.category_id = {kategoria}, events.location_id = {hely}, events.description = \'{leiras}\' WHERE events.name LIKE \'{nevek[index]}\';", conn))
+                using (var command = new MySqlCommand($"UPDATE events SET events.name = \'{nev}\', events.date = \'{datum}\', events.category_id = {kategoria}, events.location_id = {hely}, events.description = \'{leiras}\' WHERE events.name LIKE \'{nevek[index]}\' AND events.description LIKE \'{leirasok[index]}\';", conn))
                 {
                     command.ExecuteNonQuery();
                     nevek[index] = nev;
@@ -182,7 +182,9 @@ namespace Esemény_kezelő
             {
                 conn.Open();
 
-                using (var cmd = new MySqlCommand($"SELECT * FROM events WHERE events.name LIKE '{nevek[index]}' AND events.description LIKE '{leirasok[index]}' AND events.date LIKE '{datumok[index]}';", conn))
+                //MessageBox.Show(nevek[index]);
+
+                using (var cmd = new MySqlCommand($"SELECT * FROM events WHERE events.name LIKE '{nevek[index]}' AND events.description LIKE '{leirasok[index]}';", conn))
                 {
                     using (var reader = cmd.ExecuteReader())
                     {
@@ -193,7 +195,7 @@ namespace Esemény_kezelő
                     }
                 }
 
-                MessageBox.Show(helyesIndex);
+                //MessageBox.Show(helyesIndex);
 
                 using (var cmd = new MySqlCommand($"DELETE FROM participants WHERE participants.event_id = {helyesIndex};", conn))
                 {
